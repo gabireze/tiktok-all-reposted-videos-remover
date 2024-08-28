@@ -1,0 +1,120 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #d9d9d9;
+  color: #333;
+  width: 400px;
+  margin: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  gap: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.menu .material-icons {
+  cursor: pointer;
+}
+
+.menu .material-icons:hover {
+  opacity: 0.8;
+}
+
+.menu .dropdown-menu {
+  background-color: #fff;
+  margin-left: -170px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 40px;
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  padding: 0;
+}
+
+.menu:hover .dropdown-menu {
+  display: flex;
+}
+
+.menu .dropdown-menu a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.menu .dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.container {
+  margin: auto;
+  background-color: #fff;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.instructions {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.warning {
+  font-size: 14px;
+  color: #ff4d4d;
+}
+
+.button {
+  display: flex;
+  padding: 8px 16px;
+  background-color: #6366f1;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: auto;
+  border: none;
+}
+
+.button:hover {
+  background-color: #4f46e5;
+  transform: scale(1.05);
+}
