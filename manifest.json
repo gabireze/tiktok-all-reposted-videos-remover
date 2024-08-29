@@ -1,12 +1,13 @@
 {
   "name": "TikTok All Reposted Videos Remover",
   "description": "A Chrome extension to remove all reposted videos on TikTok.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Gabriel de Rezende Gonçalves",
     "email": "contato@gabireze.com.br",
     "url": "https://gabireze.com.br/"
   },
+  "homepage_url": "https://chromewebstore.google.com/detail/tiktok-all-reposted-videos-remover/amgpfdpibiacligkkkbeonfhmonkgjhg",
   "permissions": ["scripting"],
   "host_permissions": ["https://*.tiktok.com/*"],
   "background": {
