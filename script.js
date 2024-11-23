@@ -90,12 +90,13 @@ const initiateRepostsVideosRemoval = async () => {
   };
 
   const stopScript = (message, error = "") => {
-    let logMessage = `${message}. Stopping script...`;
+    let logMessage = `${message}. Reloading page...`;
     if (error) {
-      console.log({ message: logMessage, error: error });
+      console.log({ message: logMessage, error });
     } else {
       console.log(logMessage);
     }
+    setTimeout(() => window.location.reload(), 1000);
   };
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
