@@ -2,7 +2,7 @@
 
 Remove all your reposted videos on TikTok automatically — no clicks, no scrolling, just one button.
 
-![Screenshot](screenshot.png)
+![Screenshot](demo.png)
 
 ---
 
