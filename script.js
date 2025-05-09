@@ -1,16 +1,35 @@
 const initiateRepostsVideosRemoval = async () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const clickProfileTab = async () => {
+    try {
+      const profileButton = document.querySelector('[data-e2e="nav-profile"]');
+      if (!profileButton) {
+        stopScript("The 'Profile' button was not found on the page");
+        return false;
+      }
+      profileButton.click();
+      console.log("Successfully clicked the 'Profile' button.");
+      await sleep(5000);
+      return true;
+    } catch (error) {
+      stopScript("Error clicking the 'Profile' button", error);
+      return false;
+    }
+  };
+
   const clickRepostTab = async () => {
     try {
       const repostTab = document.querySelector('[class*="PRepost"]');
       if (!repostTab) {
-        stopScript("The 'Reposts' tab not found on the page");
+        stopScript("The 'Reposts' tab was not found on the page");
         return;
       }
       repostTab.click();
       console.log("Successfully opened the 'Reposts' tab.");
       await sleep(5000);
     } catch (error) {
-      stopScript("Error finding or clicking the 'Reposts' tab", error);
+      stopScript("Error clicking the 'Reposts' tab", error);
     }
   };
 
@@ -21,7 +40,7 @@ const initiateRepostsVideosRemoval = async () => {
       );
       if (!firstVideo) {
         stopScript(
-          "No reposted videos found. Your reposted videos list is empty"
+          "No reposted videos found. Your reposted list may be empty."
         );
         return;
       }
@@ -29,10 +48,7 @@ const initiateRepostsVideosRemoval = async () => {
       console.log("Successfully opened the first reposted video.");
       await sleep(5000);
     } catch (error) {
-      stopScript(
-        `Error finding or clicking the first reposted video: ${error.message}`,
-        error
-      );
+      stopScript("Error opening the first reposted video", error);
     }
   };
 
@@ -48,14 +64,12 @@ const initiateRepostsVideosRemoval = async () => {
 
         if (!repostButton) {
           clearInterval(interval);
-          stopScript("Could not find the reposted button");
+          stopScript("Repost button not found");
           return;
         }
 
         repostButton.click();
-        console.log(
-          "Successfully removed the reposted from the current video."
-        );
+        console.log("Removed repost from current video.");
 
         if (!nextVideoButton || nextVideoButton.disabled) {
           clearInterval(interval);
@@ -64,11 +78,10 @@ const initiateRepostsVideosRemoval = async () => {
         }
 
         nextVideoButton.click();
-        console.log("Clicked the next reposted video.");
+        console.log("Moved to next reposted video.");
       }, 2000);
     } catch (error) {
-      clearInterval(interval);
-      stopScript("Error occurred in the reposted video removal process", error);
+      stopScript("Error during reposted video removal", error);
     }
   };
 
@@ -79,13 +92,13 @@ const initiateRepostsVideosRemoval = async () => {
       );
       if (closeVideoButton) {
         closeVideoButton.click();
-        console.log("Successfully closed the video.");
-        stopScript("Script completed: All actions executed successfully");
+        console.log("Closed video view.");
+        stopScript("All actions executed successfully");
       } else {
         stopScript("Could not find the close video button");
       }
     } catch (error) {
-      stopScript("Error occurred while trying to close the video", error);
+      stopScript("Error closing the video", error);
     }
   };
 
@@ -99,15 +112,15 @@ const initiateRepostsVideosRemoval = async () => {
     setTimeout(() => window.location.reload(), 1000);
   };
 
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   try {
-    console.log("Script started: Initiating actions...");
+    console.log("Script started...");
+    const wentToProfile = await clickProfileTab();
+    if (!wentToProfile) return;
     await clickRepostTab();
     await clickRepostVideo();
     await clickNextRepostAndRemove();
   } catch (error) {
-    stopScript("Error in script", error);
+    stopScript("Unexpected error in main flow", error);
   }
 };
 

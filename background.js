@@ -5,16 +5,25 @@ chrome.runtime.onMessage.addListener(async function (
 ) {
   if (request.action === "removeRepostedVideos") {
     try {
-      const tabs = await chrome.tabs.query({
+      const tab = await chrome.tabs.create({
+        url: "https://www.tiktok.com/",
         active: true,
-        currentWindow: true,
       });
-      await chrome.scripting.executeScript({
-        target: { tabId: tabs[0].id },
-        files: ["script.js"],
+
+      chrome.tabs.onUpdated.addListener(function listener(tabId, info) {
+        if (tabId === tab.id && info.status === "complete") {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ["script.js"],
+          });
+          chrome.tabs.onUpdated.removeListener(listener);
+        }
       });
     } catch (error) {
-      console.log({ message: "Error starting removal process.", error: error });
+      console.log({
+        message: "Error opening TikTok or starting script.",
+        error,
+      });
     }
   }
 });

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>TikTok All Reposted Videos Remover</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -19,48 +21,72 @@
         href="https://chromewebstore.google.com/detail/tiktok-all-reposted-videos-remover/amgpfdpibiacligkkkbeonfhmonkgjhg"
         target="_blank"
       >
-        <img src="icon.png" alt="Logo of TikTok All Reposted Videos Remover" />
-        <h1 class="title">TikTok All Reposted Videos Remover</h1>
+        <img src="icon.png" alt="TikTok Remover Logo" />
+        <h1 class="title">TikTok Repost Remover</h1>
       </a>
-      <div class="menu">
-        <div class="material-icons">help_outline</div>
+
+      <div class="menu-wrapper">
+        <div class="menu" title="More tools">
+          <div class="material-icons">help_outline</div>
+        </div>
         <div class="dropdown-menu">
           <a
             href="https://chromewebstore.google.com/detail/tiktok-all-liked-videos-r/eafmacjdgennnmhagdkdckgjokmnllci"
             target="_blank"
-            >TikTok All Liked Videos Remover</a
           >
+            Remove All Liked Videos
+          </a>
           <a
             href="https://chromewebstore.google.com/detail/tiktok-all-favorite-video/cbjkccccmffolddklbkedlndlfokcpbn"
             target="_blank"
-            >TikTok All Favorite Videos Remover</a
           >
+            Remove All Favorite Videos
+          </a>
           <a
             href="https://github.com/gabireze/tiktok-all-reposted-videos-remover"
             target="_blank"
-            >GitHub</a
           >
+            GitHub Repository
+          </a>
         </div>
       </div>
     </header>
+
     <div class="container">
-      <p class="instructions">
-        Welcome to the <strong>TikTok All Reposted Videos Remover</strong>.
-        Before getting started, please make sure you are
-        <strong>logged in</strong> to your TikTok account and on
-        <strong>your profile page</strong>.
+      <p class="info-box info-login">
+        <strong>Step 1:</strong> Open
+        <a href="https://tiktok.com" target="_blank">tiktok.com</a> in a new tab
+        and make sure you're <strong>logged in</strong> to your account.
       </p>
-      <p class="warning">
-        <strong>Warning: </strong
-        ><span
-          >Keep the tab open until the process is done. Even if in the
-          background or minimized. If you close the tab, the process will stop.
-          If you have a lot of reposted videos, it may take a while. Be patient.
-          You can check the progress in the console.</span
-        >
+
+      <p class="info-box info-process">
+        <strong>Step 2:</strong> Come back here and click the button below to
+        start the process.
       </p>
-      <button id="startButton" class="button">Start Removal</button>
+
+      <button id="startButton" class="button">Start Removing Reposts</button>
+
+      <ul class="info-list">
+        <li>The extension will open your TikTok profile</li>
+        <li>Enter the "Reposts" tab</li>
+        <li>Open each reposted video</li>
+        <li>Remove it from your reposts and go to the next</li>
+        <li>Repeat until all reposted videos are gone</li>
+      </ul>
+
+      <p class="info-box info-warning">
+        <strong>Note:</strong> If you have a lot of reposted videos, the process
+        may take a while. TikTok might temporarily block actions if too many
+        happen too fast. In that case, wait about <strong>1 hour</strong> and
+        try again.
+      </p>
+
+      <p class="info-box info-check">
+        <strong>Tip:</strong> When the process finishes, refresh your TikTok
+        profile to confirm that all reposted videos were removed.
+      </p>
     </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
