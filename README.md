@@ -20,7 +20,7 @@ Remove all your reposted videos on TikTok automatically — no clicks, no scroll
 
 ### From Chrome Web Store
 
-👉 [Install from Chrome Web Store](https://chrome.google.com/webstore/detail/tiktok-all-reposted-videos-remover/)
+👉 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/tiktok-all-reposted-video/amgpfdpibiacligkkkbeonfhmonkgjhg)
 
 ### 🛠️ Manual Installation (for developers)
 
