@@ -1,30 +1,40 @@
 const initiateRepostsVideosRemoval = async () => {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+  const waitForElement = async (selector, timeout = 10000, interval = 200) => {
+    const start = Date.now();
+    return new Promise((resolve, reject) => {
+      const check = () => {
+        const element = document.querySelector(selector);
+        if (element) return resolve(element);
+        if (Date.now() - start >= timeout) {
+          return reject(new Error(`Timeout: Element ${selector} not found`));
+        }
+        setTimeout(check, interval);
+      };
+      check();
+    });
+  };
+
   const clickProfileTab = async () => {
     try {
-      const profileButton = document.querySelector('[data-e2e="nav-profile"]');
-      if (!profileButton) {
-        stopScript("The 'Profile' button was not found on the page");
-        return false;
-      }
+      const profileButton = await waitForElement('[data-e2e="nav-profile"]');
       profileButton.click();
       console.log("Successfully clicked the 'Profile' button.");
       await sleep(5000);
       return true;
     } catch (error) {
-      stopScript("Error clicking the 'Profile' button", error);
+      stopScript(
+        "The 'Profile' button was not found on the page in time",
+        error
+      );
       return false;
     }
   };
 
   const clickRepostTab = async () => {
     try {
-      const repostTab = document.querySelector('[class*="PRepost"]');
-      if (!repostTab) {
-        stopScript("The 'Reposts' tab was not found on the page");
-        return;
-      }
+      const repostTab = await waitForElement('[class*="PRepost"]');
       repostTab.click();
       console.log("Successfully opened the 'Reposts' tab.");
       await sleep(5000);
@@ -35,20 +45,12 @@ const initiateRepostsVideosRemoval = async () => {
 
   const clickRepostVideo = async () => {
     try {
-      const firstVideo = document.querySelector(
-        '[class*="DivPlayerContainer"]'
-      );
-      if (!firstVideo) {
-        stopScript(
-          "No reposted videos found. Your reposted list may be empty."
-        );
-        return;
-      }
+      const firstVideo = await waitForElement('[class*="DivPlayerContainer"]');
       firstVideo.click();
       console.log("Successfully opened the first reposted video.");
       await sleep(5000);
     } catch (error) {
-      stopScript("Error opening the first reposted video", error);
+      stopScript("No reposted videos found or unable to open", error);
     }
   };
 
