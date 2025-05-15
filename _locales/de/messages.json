@@ -1,0 +1,44 @@
+{
+  "appTitle": {
+    "message": "TikTok All Reposted Videos Remover"
+  },
+  "startButton": {
+    "message": "Reposts entfernen starten"
+  },
+  "step1": {
+    "message": "Schritt 1: Öffne tiktok.com in einem neuen Tab und stelle sicher, dass du in deinem Konto eingeloggt bist."
+  },
+  "step2": {
+    "message": "Schritt 2: Kehre hierher zurück und klicke auf die Schaltfläche unten, um zu beginnen."
+  },
+  "list1": {
+    "message": "Die Erweiterung öffnet dein TikTok-Profil"
+  },
+  "list2": {
+    "message": "Gehe zum Tab „Reposts“"
+  },
+  "list3": {
+    "message": "Öffne jedes erneut gepostete Video"
+  },
+  "list4": {
+    "message": "Entferne das Video aus den Reposts und gehe zum nächsten"
+  },
+  "list5": {
+    "message": "Wiederhole dies, bis alle Reposts entfernt wurden"
+  },
+  "note": {
+    "message": "Hinweis: Wenn du viele erneut gepostete Videos hast, kann der Vorgang etwas dauern. TikTok kann temporär Aktionen blockieren, wenn zu viele durchgeführt werden. Warte etwa eine Stunde und versuche es erneut."
+  },
+  "tip": {
+    "message": "Tipp: Wenn der Vorgang abgeschlossen ist, aktualisiere dein TikTok-Profil, um zu überprüfen, ob alle Reposts entfernt wurden."
+  },
+  "linkLiked": {
+    "message": "Alle „Gefällt mir“-Videos entfernen"
+  },
+  "linkFavorite": {
+    "message": "Alle Favoriten-Videos entfernen"
+  },
+  "linkGitHub": {
+    "message": "GitHub-Repository"
+  }
+}

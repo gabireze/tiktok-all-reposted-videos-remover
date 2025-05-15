@@ -1,0 +1,44 @@
+{
+  "appTitle": {
+    "message": "TikTok All Reposted Videos Remover"
+  },
+  "startButton": {
+    "message": "Mulakan penghapusan repost"
+  },
+  "step1": {
+    "message": "Langkah 1: Buka tiktok.com dalam tab baharu dan pastikan anda sudah log masuk ke akaun anda."
+  },
+  "step2": {
+    "message": "Langkah 2: Kembali ke sini dan klik butang di bawah untuk memulakan."
+  },
+  "list1": {
+    "message": "Sambungan ini akan membuka profil TikTok anda"
+  },
+  "list2": {
+    "message": "Pergi ke tab \"Repost\""
+  },
+  "list3": {
+    "message": "Buka setiap video yang telah di-repost"
+  },
+  "list4": {
+    "message": "Alih keluar video daripada repost dan teruskan ke yang seterusnya"
+  },
+  "list5": {
+    "message": "Ulangi sehingga semua repost dipadamkan"
+  },
+  "note": {
+    "message": "Nota: Jika anda mempunyai banyak video repost, proses ini mungkin mengambil masa. TikTok mungkin menyekat tindakan buat sementara waktu jika terlalu banyak dilakukan. Tunggu kira-kira 1 jam dan cuba semula."
+  },
+  "tip": {
+    "message": "Petua: Setelah proses selesai, segarkan profil TikTok anda untuk memastikan semua repost telah dipadamkan."
+  },
+  "linkLiked": {
+    "message": "Padam Semua Video Disukai"
+  },
+  "linkFavorite": {
+    "message": "Padam Semua Video Kegemaran"
+  },
+  "linkGitHub": {
+    "message": "Repositori GitHub"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "appTitle": {
+    "message": "TikTok All Reposted Videos Remover"
+  },
+  "startButton": {
+    "message": "Yeniden paylaşımları kaldırmaya başla"
+  },
+  "step1": {
+    "message": "Adım 1: Yeni bir sekmede tiktok.com'u açın ve hesabınıza giriş yaptığınızdan emin olun."
+  },
+  "step2": {
+    "message": "Adım 2: Buraya geri dönün ve başlamak için aşağıdaki butona tıklayın."
+  },
+  "list1": {
+    "message": "Eklenti TikTok profilinizi açacak"
+  },
+  "list2": {
+    "message": "\"Yeniden Paylaşımlar\" sekmesine gidin"
+  },
+  "list3": {
+    "message": "Her yeniden paylaşılan videoyu açın"
+  },
+  "list4": {
+    "message": "Videoyu yeniden paylaşımlardan kaldırın ve bir sonrakine geçin"
+  },
+  "list5": {
+    "message": "Tüm yeniden paylaşımlar silinene kadar tekrarlayın"
+  },
+  "note": {
+    "message": "Not: Eğer çok sayıda yeniden paylaşılan videonuz varsa, işlem uzun sürebilir. TikTok çok fazla işlem yapılırsa geçici olarak engelleme uygulayabilir. Yaklaşık 1 saat bekleyip tekrar deneyin."
+  },
+  "tip": {
+    "message": "İpucu: İşlem tamamlandığında, tüm yeniden paylaşımların silindiğinden emin olmak için TikTok profilinizi yenileyin."
+  },
+  "linkLiked": {
+    "message": "Tüm Beğenilen Videoları Kaldır"
+  },
+  "linkFavorite": {
+    "message": "Tüm Favori Videoları Kaldır"
+  },
+  "linkGitHub": {
+    "message": "GitHub Deposu"
+  }
+}

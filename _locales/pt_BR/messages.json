@@ -1,0 +1,44 @@
+{
+  "appTitle": {
+    "message": "TikTok All Reposted Videos Remover"
+  },
+  "step1": {
+    "message": "Passo 1: Abra tiktok.com em uma nova aba e certifique-se de estar logado em sua conta."
+  },
+  "step2": {
+    "message": "Passo 2: Volte aqui e clique no botão abaixo para iniciar o processo."
+  },
+  "startButton": {
+    "message": "Iniciar Remoção de Reposts"
+  },
+  "list1": {
+    "message": "A extensão abrirá seu perfil do TikTok"
+  },
+  "list2": {
+    "message": "Entrará na aba de \"Reposts\""
+  },
+  "list3": {
+    "message": "Abrirá cada vídeo repostado"
+  },
+  "list4": {
+    "message": "Removerá dos reposts e passará para o próximo"
+  },
+  "list5": {
+    "message": "Repetirá até que todos os reposts sejam removidos"
+  },
+  "note": {
+    "message": "Observação: Se você tiver muitos vídeos repostados, o processo pode demorar. O TikTok pode bloquear ações temporariamente se muitas acontecerem em pouco tempo. Nesse caso, aguarde cerca de 1 hora e tente novamente."
+  },
+  "tip": {
+    "message": "Dica: Quando o processo terminar, atualize seu perfil do TikTok para confirmar que todos os vídeos repostados foram removidos."
+  },
+  "linkLiked": {
+    "message": "Remover Todos os Vídeos Curtidos"
+  },
+  "linkFavorite": {
+    "message": "Remover Todos os Vídeos Favoritos"
+  },
+  "linkGitHub": {
+    "message": "Repositório no GitHub"
+  }
+}
