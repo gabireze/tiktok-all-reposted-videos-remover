@@ -42,7 +42,6 @@ This extension does **not** use any third-party analytics, tracking scripts, or 
 
 The extension uses the following Chrome permissions:
 
-- **`tabs`**: Allows the extension to open TikTok in a new tab and interact with it.
 - **`scripting`**: Required to execute the removal logic on the TikTok page.
 - **`host_permissions`** (`https://www.tiktok.com/*`): Grants access exclusively to TikTok pages for automation. No other sites are accessed.
 

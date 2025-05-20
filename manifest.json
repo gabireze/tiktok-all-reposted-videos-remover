@@ -8,7 +8,7 @@
     "url": "https://gabireze.com.br/"
   },
   "homepage_url": "https://chromewebstore.google.com/detail/tiktok-all-reposted-videos-remover/amgpfdpibiacligkkkbeonfhmonkgjhg",
-  "permissions": ["tabs", "scripting"],
+  "permissions": ["scripting"],
   "host_permissions": ["https://*.tiktok.com/*"],
   "background": {
     "service_worker": "background.js"
