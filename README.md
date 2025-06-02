@@ -6,6 +6,11 @@ Remove all your reposted videos on TikTok automatically — no clicks, no scroll
 
 ---
 
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/tiktok-all-reposted-videos-remover@github)](https://gitads.dev/v1/ad-track?source=gabireze/tiktok-all-reposted-videos-remover@github)
+
+---
+
 ## Features
 
 - ✅ Opens your TikTok profile in a new tab automatically  
@@ -63,10 +68,5 @@ If you find a bug or have an idea for improvement, feel free to open an issue or
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).
-
----
-
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/tiktok-all-reposted-videos-remover@github)](https://gitads.dev/v1/ad-track?source=gabireze/tiktok-all-reposted-videos-remover@github)
 
 <!-- GitAds-Verify: 2U3RGGXDR7ECMBBHCE2Q94MLN5LUAPN6 -->
