@@ -63,3 +63,6 @@ If you find a bug or have an idea for improvement, feel free to open an issue or
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).
+
+<!-- GitAds-Verify: 2U3RGGXDR7ECMBBHCE2Q94MLN5LUAPN6 -->
+
