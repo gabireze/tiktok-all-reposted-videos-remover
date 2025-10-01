@@ -40,5 +40,8 @@
   },
   "linkGitHub": {
     "message": "GitHub Repository"
+  },
+  "donateTooltip": {
+    "message": "Support the project"
   }
 }

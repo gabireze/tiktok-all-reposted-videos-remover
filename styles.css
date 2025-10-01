@@ -50,20 +50,50 @@ header {
   display: inline-block;
 }
 
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.donate-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-accent);
+  transition: all 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.donate-button:hover {
+  color: var(--color-accent-alt);
+  background-color: rgba(255, 0, 80, 0.1);
+  transform: scale(1.05);
+}
+
+.donate-button .material-icons {
+  font-size: 24px;
+}
+
 .menu {
   display: flex;
   align-items: center;
   cursor: pointer;
   color: var(--color-text);
+  transition: all 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.menu:hover {
+  color: var(--color-accent-alt);
+  background-color: rgba(0, 242, 234, 0.1);
+  transform: scale(1.05);
 }
 
 .menu .material-icons {
   font-size: 24px;
-  transition: opacity 0.2s;
-}
-
-.menu .material-icons:hover {
-  opacity: 0.7;
 }
 
 .dropdown-menu {
@@ -199,5 +229,3 @@ p {
   list-style-type: disc;
   margin: 0px;
 }
-
-

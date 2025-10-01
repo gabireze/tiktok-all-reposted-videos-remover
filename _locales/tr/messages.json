@@ -40,5 +40,8 @@
   },
   "linkGitHub": {
     "message": "GitHub Deposu"
+  },
+  "donateTooltip": {
+    "message": "Projeyi destekle"
   }
 }

@@ -40,5 +40,8 @@
   },
   "linkGitHub": {
     "message": "Repositori GitHub"
+  },
+  "donateTooltip": {
+    "message": "Sokong projek ini"
   }
 }
