@@ -20,15 +20,17 @@ Specifically:
 
 ## How the Extension Works
 
-The extension performs the following actions:
+The extension performs the following actions, entirely in your browser:
 
 - Opens [tiktok.com](https://www.tiktok.com) in a new browser tab.
 - Navigates to your TikTok profile.
-- Accesses the “Reposts” tab.
-- Opens each reposted video and simulates a click to remove the repost.
-- Repeats the process until all reposted videos are removed.
+- Uses the same authenticated TikTok web APIs that the site itself uses to:
+  - List your reposted videos.
+  - Send requests to remove each selected repost.
+- Shows an in-page control panel to pause, resume, and download a local report of the items processed.
 
-All actions are executed **locally in your browser** and require no server communication.
+All requests are made **directly from your browser to TikTok** using your existing session.  
+No data is sent to any server controlled by this extension or its developer.
 
 ---
 
@@ -42,10 +44,14 @@ This extension does **not** use any third-party analytics, tracking scripts, or 
 
 The extension uses the following Chrome permissions:
 
-- **`scripting`**: Required to execute the removal logic on the TikTok page.
-- **`host_permissions`** (`https://www.tiktok.com/*`): Grants access exclusively to TikTok pages for automation. No other sites are accessed.
+- **`host_permissions`** (`https://*.tiktok.com/*`): Required so the extension can run only on TikTok pages. No other domains are accessed.
+- **`scripting`**: Needed to inject and run the content script on TikTok pages and to read session data required to identify your account.
+- **`tabs`**: Used to open your TikTok profile in a new tab and communicate with that tab.
+- **`cookies`**: Used **only in the popup** to check whether you are logged in to TikTok (by checking TikTok cookies locally). Cookie values are not stored or sent anywhere.
+- **`storage`**: Used to save your local configuration (intervals, keywords, report format, etc.) inside your browser.
 
-These permissions are strictly necessary for the extension to perform its intended function.
+These permissions are the minimum required for the extension to perform its intended function.  
+They are never used to collect analytics, track you across sites, or send data to external services.
 
 ---
 

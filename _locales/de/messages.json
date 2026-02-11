@@ -2,14 +2,14 @@
   "appTitle": {
     "message": "TikTok All Reposted Videos Remover"
   },
-  "startButton": {
-    "message": "Reposts entfernen starten"
-  },
   "step1": {
     "message": "Schritt 1: Öffne tiktok.com in einem neuen Tab und stelle sicher, dass du in deinem Konto eingeloggt bist."
   },
   "step2": {
     "message": "Schritt 2: Kehre hierher zurück und klicke auf die Schaltfläche unten, um zu beginnen."
+  },
+  "startButton": {
+    "message": "Reposts entfernen starten"
   },
   "list1": {
     "message": "Die Erweiterung öffnet dein TikTok-Profil"
@@ -43,5 +43,118 @@
   },
   "donateTooltip": {
     "message": "Projekt unterstützen"
+  },
+  "notLoggedIn": {
+    "message": "Sign in to TikTok first."
+  },
+  "signInTiktok": {
+    "message": "Sign in to TikTok"
+  },
+  "configTitle": {
+    "message": "Settings"
+  },
+  "useKeywords": {
+    "message": "Filter by keywords (leave unchecked or empty to remove all)"
+  },
+  "intervalMode": {
+    "message": "Interval between removals:"
+  },
+  "intervalRange": {
+    "message": "Between min and max (seconds)"
+  },
+  "intervalSet": {
+    "message": "Fixed values (seconds)"
+  },
+  "seconds": {
+    "message": "sec"
+  },
+  "reportFormat": {
+    "message": "Report format:"
+  },
+  "keywordsPlaceholder": {
+    "message": "e.g. cat, memecoin"
+  },
+  "intervalSetPlaceholder": {
+    "message": "e.g. 1, 3, 5, 7"
+  },
+  "pagePauseLabel": {
+    "message": "Pause between pages (seconds):"
+  },
+  "panelTitle": {
+    "message": "TikTok Reposts Remover"
+  },
+  "statusPreparing": {
+    "message": "Preparing…"
+  },
+  "statusPaused": {
+    "message": "Paused"
+  },
+  "statusResuming": {
+    "message": "Resuming…"
+  },
+  "btnPause": {
+    "message": "Pause"
+  },
+  "btnResume": {
+    "message": "Resume"
+  },
+  "btnDownloadReport": {
+    "message": "Download report"
+  },
+  "statusWaiting": {
+    "message": "Waiting for page…"
+  },
+  "statusListing": {
+    "message": "Listing reposts…"
+  },
+  "statusPageRemoving": {
+    "message": "Page $1$: removing $2$ of $3$ items…",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" },
+      "3": { "content": "$3" }
+    }
+  },
+  "statusDone": {
+    "message": "Done! All reposts processed."
+  },
+  "statusNone": {
+    "message": "No reposts found."
+  },
+  "statusErrorNoAccount": {
+    "message": "Could not identify your account. Reload TikTok and try again."
+  },
+  "statusErrorRedirectedForyou": {
+    "message": "You were redirected to For You because you're not logged in. Please log in to TikTok, then open the extension and click Start again."
+  },
+  "statusErrorRemove": {
+    "message": "Error removing $1$. Check console.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "panelClose": {
+    "message": "Close"
+  },
+  "statsPages": {
+    "message": "Pages"
+  },
+  "statsRemoved": {
+    "message": "Removed"
+  },
+  "statsListed": {
+    "message": "Listed"
+  },
+  "statsFailed": {
+    "message": "Failed"
+  },
+  "statusStoppedFailures": {
+    "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "statusBetweenPages": {
+    "message": "Pause before next page…"
   }
 }

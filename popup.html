@@ -2,102 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title data-i18n="appTitle">TikTok All Reposted Videos Remover</title>
+    <title data-i18n="appTitle">TikTok Reposts Remover</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <a
-        class="logo"
-        href="https://chromewebstore.google.com/detail/tiktok-all-reposted-videos-remover/amgpfdpibiacligkkkbeonfhmonkgjhg"
-        target="_blank"
-      >
-        <img src="icon.png" alt="TikTok Remover Logo" />
-        <h1 class="title" data-i18n="appTitle">
-          TikTok All Reposted Videos Remover
-        </h1>
-      </a>
-
-      <div class="header-icons">
-        <div
-          class="donate-button"
-          id="donateButton"
-          data-i18n-title="donateTooltip"
-          title="Support the project"
-        >
-          <div class="material-icons">favorite</div>
+    <div class="popup">
+      <header class="popup-header">
+        <div class="popup-brand">
+          <img src="icon.png" alt="" class="popup-icon" />
+          <span class="popup-title" data-i18n="appTitle">TikTok Reposts Remover</span>
         </div>
-        <div class="menu-wrapper">
-          <div class="menu" title="More tools">
-            <div class="material-icons">help_outline</div>
-          </div>
-          <div class="dropdown-menu">
-            <a
-              href="https://chromewebstore.google.com/detail/tiktok-all-liked-videos-r/eafmacjdgennnmhagdkdckgjokmnllci"
-              target="_blank"
-              data-i18n="linkLiked"
-            >
-              Remove All Liked Videos
-            </a>
-            <a
-              href="https://chromewebstore.google.com/detail/tiktok-all-favorite-video/cbjkccccmffolddklbkedlndlfokcpbn"
-              target="_blank"
-              data-i18n="linkFavorite"
-            >
-              Remove All Favorite Videos
-            </a>
-            <a
-              href="https://github.com/gabireze/tiktok-all-reposted-videos-remover"
-              target="_blank"
-              data-i18n="linkGitHub"
-            >
-              GitHub Repository
-            </a>
+        <div class="popup-actions">
+          <button type="button" class="popup-icon-btn" id="donateButton" data-i18n-title="donateTooltip" title="Support">❤️</button>
+          <div class="popup-menu">
+            <button type="button" class="popup-icon-btn" aria-haspopup="true" aria-expanded="false" id="menuBtn">⋯</button>
+            <div class="popup-dropdown" id="menuDropdown" aria-hidden="true">
+              <a href="https://chromewebstore.google.com/detail/tiktok-all-liked-videos-r/eafmacjdgennnmhagdkdckgjokmnllci" target="_blank" data-i18n="linkLiked">Remove Liked Videos</a>
+              <a href="https://chromewebstore.google.com/detail/tiktok-all-favorite-video/cbjkccccmffolddklbkedlndlfokcpbn" target="_blank" data-i18n="linkFavorite">Remove Favorites</a>
+              <a href="https://github.com/gabireze/tiktok-all-reposted-videos-remover" target="_blank" data-i18n="linkGitHub">GitHub</a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <div class="container">
-      <p class="info-box info-login">
-        <span data-i18n="step1"></span>
-      </p>
+      <main class="popup-main">
+        <p class="popup-step" data-i18n="step1">Be logged in to TikTok, set options below, then click Start.</p>
 
-      <p class="info-box info-process">
-        <span data-i18n="step2"></span>
-      </p>
+        <section class="popup-config">
+          <button type="button" class="popup-config-toggle" id="configToggle" aria-expanded="true">
+            <span data-i18n="configTitle">Settings</span>
+            <span class="popup-config-chevron">▼</span>
+          </button>
+          <div class="popup-config-body" id="configBody">
+            <label class="popup-field">
+              <input type="checkbox" id="useKeywords" />
+              <span data-i18n="useKeywords">Filter by keywords (uncheck to remove all)</span>
+            </label>
+            <input type="text" id="keywordsInput" class="popup-input" data-i18n-placeholder="keywordsPlaceholder" placeholder="e.g. cat, memecoin" disabled />
 
-      <button id="startButton" class="button" data-i18n="startButton">
-        Start Removing Reposts
-      </button>
+            <label class="popup-field" data-i18n="intervalMode">Interval (sec):</label>
+            <select id="intervalMode" class="popup-input">
+              <option value="range" data-i18n="intervalRange">Min – max</option>
+              <option value="set" data-i18n="intervalSet">Fixed values</option>
+            </select>
+            <div id="intervalRangeGroup" class="popup-range-group">
+              <div class="popup-dual-range-header">
+                <p class="popup-range-caption" data-i18n="intervalRange">Between min and max (seconds)</p>
+                <span class="popup-range-display" id="intervalRangeDisplay">1s – 3s</span>
+              </div>
+              <div class="popup-dual-range-track" id="intervalRangeTrack">
+                <div class="popup-dual-range-fill" id="intervalRangeFill" aria-hidden="true"></div>
+                <input type="range" id="intervalMin" class="popup-dual-range-input" min="1" max="10" step="1" value="1" aria-label="Min seconds" />
+                <input type="range" id="intervalMax" class="popup-dual-range-input" min="1" max="10" step="1" value="3" aria-label="Max seconds" />
+              </div>
+              <div class="popup-dual-range-ticks" aria-hidden="true">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+              </div>
+            </div>
+            <div id="intervalSetGroup" class="popup-inline" hidden>
+              <input type="text" id="intervalSet" class="popup-input" data-i18n-placeholder="intervalSetPlaceholder" placeholder="1, 3, 5" value="1, 3, 5" />
+              <span data-i18n="seconds">s</span>
+            </div>
+            <label class="popup-field" data-i18n="pagePauseLabel">Pause between pages (s):</label>
+            <input type="number" id="pagePause" class="popup-input popup-input-sm" min="0" max="120" value="5" aria-label="Pause" />
+            <label class="popup-field" data-i18n="reportFormat">Report:</label>
+            <select id="reportFormat" class="popup-input">
+              <option value="json">JSON</option>
+              <option value="csv">CSV</option>
+            </select>
+          </div>
+        </section>
 
-      <ul class="info-list">
-        <li data-i18n="list1"></li>
-        <li data-i18n="list2"></li>
-        <li data-i18n="list3"></li>
-        <li data-i18n="list4"></li>
-        <li data-i18n="list5"></li>
-      </ul>
+        <button type="button" id="loginButton" class="popup-btn popup-btn-ghost" hidden data-i18n="signInTiktok">Sign in to TikTok</button>
+        <button type="button" id="startButton" class="popup-btn popup-btn-primary" data-i18n="startButton">Start removing reposts</button>
 
-      <p class="info-box info-warning">
-        <span data-i18n="note"></span>
-      </p>
-
-      <p class="info-box info-check">
-        <span data-i18n="tip"></span>
-      </p>
+        <p class="popup-note" data-i18n="note">Use intervals to avoid limits. Pause/Resume and download report from the in-page panel.</p>
+        <p class="popup-tip" data-i18n="tip">Refresh your TikTok profile after finishing to confirm.</p>
+      </main>
     </div>
-
     <script src="popup.js"></script>
-    <script src="i18n.js"></script>
   </body>
 </html>

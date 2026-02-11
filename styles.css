@@ -1,231 +1,453 @@
 :root {
-  --color-bg: #121212;
-  --color-surface: #1e1e1e;
-  --color-text: #f0f0f0;
-  --color-muted: #b0b0b0;
-  --color-accent: #ff0050;
-  --color-accent-alt: #00f2ea;
-  --color-warning: #ff4d4d;
+  --bg: #0d0d0d;
+  --surface: #161616;
+  --surface-hover: #1c1c1c;
+  --text: #f2f2f2;
+  --muted: #888;
+  --accent: #ff0050;
+  --accent-alt: #00f2ea;
+  --border: #2a2a2a;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  width: 380px;
+  min-height: 320px;
 }
 
-header {
+.popup {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* ----- Header ----- */
+.popup-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-surface);
-  padding: 14px 20px;
-  border-bottom: 1px solid #2a2a2a;
-  width: 400px;
-  margin: auto;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
-.logo {
+.popup-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
-  color: var(--color-text);
 }
 
-.logo img {
-  width: 28px;
-  height: 28px;
-}
-
-.title {
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.menu-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.header-icons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.donate-button {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--color-accent);
-  transition: all 0.2s;
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.donate-button:hover {
-  color: var(--color-accent-alt);
-  background-color: rgba(255, 0, 80, 0.1);
-  transform: scale(1.05);
-}
-
-.donate-button .material-icons {
-  font-size: 24px;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--color-text);
-  transition: all 0.2s;
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.menu:hover {
-  color: var(--color-accent-alt);
-  background-color: rgba(0, 242, 234, 0.1);
-  transform: scale(1.05);
-}
-
-.menu .material-icons {
-  font-size: 24px;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: var(--color-surface);
-  border: 1px solid #2a2a2a;
+.popup-icon {
+  width: 24px;
+  height: 24px;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  flex-direction: column;
-  width: 240px;
-  z-index: 10;
-  transition: opacity 0.3s ease;
 }
 
-.menu-wrapper:hover .dropdown-menu {
-  display: flex;
-}
-
-.dropdown-menu a {
-  color: var(--color-text);
-  text-decoration: none;
-  padding: 12px 16px;
+.popup-title {
   font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.popup-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.popup-icon-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.popup-icon-btn:hover {
+  color: var(--accent-alt);
+  background: rgba(0, 242, 234, 0.08);
+}
+
+#donateButton {
+  color: var(--accent);
+}
+
+#donateButton:hover {
+  color: #ff3366;
+  background: rgba(255, 0, 80, 0.1);
+}
+
+.popup-menu {
+  position: relative;
+}
+
+.popup-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  min-width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 6px 0;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.popup-dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.popup-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.popup-dropdown a:hover {
+  background: var(--surface-hover);
+}
+
+/* ----- Main ----- */
+.popup-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.popup-step {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ----- Config (slide) ----- */
+.popup-config {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.popup-config-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: var(--accent-alt);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
   transition: background 0.2s;
 }
 
-.dropdown-menu a:hover {
-  background-color: #2a2a2a;
+.popup-config-toggle:hover {
+  background: var(--surface-hover);
 }
 
-.container {
-  margin: auto;
-  background-color: var(--color-surface);
-  padding: 8px 20px 16px 20px;
-  width: 400px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.popup-config-chevron {
+  font-size: 10px;
+  opacity: 0.8;
+  transition: transform 0.25s ease;
+}
+
+.popup-config.is-closed .popup-config-chevron {
+  transform: rotate(-90deg);
+}
+
+.popup-config-body {
+  display: grid;
+  gap: 8px;
+  padding: 0 14px 14px;
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.25s ease;
+}
+
+.popup-config.is-closed .popup-config-body {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+.popup-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.popup-field input[type="checkbox"] {
+  margin: 0;
+}
+
+.popup-input {
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+
+.popup-input:focus {
+  outline: none;
+  border-color: var(--accent-alt);
+}
+
+.popup-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.popup-input-sm {
+  width: 64px;
+  display: inline-block;
+}
+
+.popup-inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.popup-inline-sep {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ----- Dual range slider (interval min–max) ----- */
+.popup-range-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  padding: 10px 0 4px;
 }
 
-.instructions {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  color: var(--color-muted);
+.popup-dual-range-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.instructions strong {
-  color: var(--color-text);
+.popup-range-caption {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.warning {
-  font-size: 14px;
-  background-color: #2a0000;
-  color: var(--color-warning);
-  padding: 12px 14px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  line-height: 1.5;
+.popup-range-display {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-alt);
+  letter-spacing: -0.02em;
 }
 
-.button {
-  margin: 4px 0 8px 0;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-alt));
-  color: #fff;
-  padding: 12px;
+.popup-dual-range-track {
+  position: relative;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.popup-dual-range-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  background: var(--accent-alt);
+  border-radius: 4px;
+  pointer-events: none;
+  transition: left 0.1s ease, width 0.1s ease;
+}
+
+/* Input posicionado para o punho ficar em cima da linha (centro do punho na borda superior da trilha) */
+.popup-dual-range-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: -9px;
   width: 100%;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  pointer-events: none;
+}
+
+.popup-dual-range-input::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent-alt);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.popup-dual-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 14px rgba(0, 242, 234, 0.5);
+}
+
+.popup-dual-range-input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background: transparent;
+  height: 8px;
+}
+
+.popup-dual-range-input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent-alt);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  top: -9px;
+}
+
+.popup-dual-range-input::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 14px rgba(0, 242, 234, 0.5);
+}
+
+.popup-dual-range-input::-moz-range-track {
+  background: transparent;
+  height: 8px;
+}
+
+.popup-dual-range-input:last-of-type {
+  z-index: 1;
+}
+
+.popup-dual-range-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 0 2px;
+  font-size: 10px;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.popup-dual-range-ticks span {
+  flex: 0 0 auto;
+}
+
+/* ----- Buttons ----- */
+.popup-btn {
+  width: 100%;
+  padding: 12px 16px;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: var(--radius);
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.15s, opacity 0.15s, background 0.2s;
 }
 
-.button:hover {
-  transform: scale(1.03);
+.popup-btn:focus-visible {
+  outline: 2px solid var(--accent-alt);
+  outline-offset: 2px;
 }
 
-p {
-  margin-top: 0px;
+.popup-btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff3366 50%, var(--accent-alt) 100%);
+  background-size: 200% 100%;
+  color: #fff;
 }
 
-.info-box {
-  font-size: 14px;
+.popup-btn-primary:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.popup-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.popup-btn-ghost {
+  background: var(--surface);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.popup-btn-ghost:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+/* ----- Note & tip ----- */
+.popup-note,
+.popup-tip {
   margin: 0;
-  padding: 12px 14px;
-  border-radius: 6px;
-  line-height: 1.5;
-  border-left: 4px solid;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  opacity: 0.9;
 }
 
-.info-login {
-  background-color: #1e1e1e;
-  border-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.info-process {
-  background-color: #1a1a1a;
-  border-color: var(--color-accent-alt);
-  color: var(--color-text);
-}
-
-.info-warning {
-  background-color: #2a0000;
-  border-color: var(--color-warning);
-  color: var(--color-warning);
-}
-
-.info-check {
-  background-color: #002a2a;
-  border-color: var(--color-accent-alt);
-  color: #9ff;
-}
-
-.info-box a {
-  color: var(--color-accent-alt);
-  text-decoration: underline;
-}
-
-.info-box ul {
-  padding-left: 20px;
-}
-
-.info-list {
-  font-size: 14px;
-  color: var(--color-text);
-  padding: 0px 16px;
-  list-style-type: disc;
-  margin: 0px;
+.popup-tip {
+  opacity: 0.75;
 }

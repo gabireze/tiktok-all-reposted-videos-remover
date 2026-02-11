@@ -3,7 +3,7 @@
     "message": "TikTok All Reposted Videos Remover"
   },
   "step1": {
-    "message": "Passo 1: Abra tiktok.com em uma nova aba e certifique-se de estar logado em sua conta."
+    "message": "Esteja logado no TikTok, configure as opções abaixo e clique em Iniciar. Um painel abrirá no TikTok com progresso e Pausar/Continuar."
   },
   "step2": {
     "message": "Passo 2: Volte aqui e clique no botão abaixo para iniciar o processo."
@@ -27,10 +27,10 @@
     "message": "Repetirá até que todos os reposts sejam removidos"
   },
   "note": {
-    "message": "Observação: Se você tiver muitos vídeos repostados, o processo pode demorar. O TikTok pode bloquear ações temporariamente se muitas acontecerem em pouco tempo. Nesse caso, aguarde cerca de 1 hora e tente novamente."
+    "message": "Use intervalos para evitar bloqueios. Você pode Pausar e Continuar pelo painel na página e baixar um relatório ao terminar."
   },
   "tip": {
-    "message": "Dica: Quando o processo terminar, atualize seu perfil do TikTok para confirmar que todos os vídeos repostados foram removidos."
+    "message": "Dica: Atualize seu perfil do TikTok ao terminar para confirmar que os reposts foram removidos."
   },
   "linkLiked": {
     "message": "Remover Todos os Vídeos Curtidos"
@@ -43,5 +43,118 @@
   },
   "donateTooltip": {
     "message": "Apoie o projeto"
+  },
+  "notLoggedIn": {
+    "message": "Faça login no TikTok primeiro."
+  },
+  "signInTiktok": {
+    "message": "Fazer login no TikTok"
+  },
+  "configTitle": {
+    "message": "Configurações"
+  },
+  "useKeywords": {
+    "message": "Filtrar por palavras-chave (deixe desmarcado ou vazio para remover todos)"
+  },
+  "intervalMode": {
+    "message": "Intervalo entre remoções:"
+  },
+  "intervalRange": {
+    "message": "Entre min e max (segundos)"
+  },
+  "intervalSet": {
+    "message": "Valores fixos (segundos)"
+  },
+  "seconds": {
+    "message": "seg"
+  },
+  "reportFormat": {
+    "message": "Formato do relatório:"
+  },
+  "keywordsPlaceholder": {
+    "message": "ex: cat, memecoin"
+  },
+  "intervalSetPlaceholder": {
+    "message": "ex: 1, 3, 5, 7"
+  },
+  "pagePauseLabel": {
+    "message": "Pausa entre páginas (segundos):"
+  },
+  "panelTitle": {
+    "message": "TikTok Reposts Remover"
+  },
+  "statusPreparing": {
+    "message": "Preparando…"
+  },
+  "statusPaused": {
+    "message": "Pausado"
+  },
+  "statusResuming": {
+    "message": "Continuando…"
+  },
+  "btnPause": {
+    "message": "Pausar"
+  },
+  "btnResume": {
+    "message": "Continuar"
+  },
+  "btnDownloadReport": {
+    "message": "Baixar relatório"
+  },
+  "statusWaiting": {
+    "message": "Aguardando página…"
+  },
+  "statusListing": {
+    "message": "Listando reposts…"
+  },
+  "statusPageRemoving": {
+    "message": "Página $1$: removendo $2$ de $3$ itens…",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" },
+      "3": { "content": "$3" }
+    }
+  },
+  "statusDone": {
+    "message": "Concluído! Todos os reposts processados."
+  },
+  "statusNone": {
+    "message": "Nenhum repost encontrado."
+  },
+  "statusErrorNoAccount": {
+    "message": "Não foi possível identificar sua conta. Recarregue o TikTok e tente de novo."
+  },
+  "statusErrorRedirectedForyou": {
+    "message": "Você foi redirecionado ao For You porque não está logado. Faça login no TikTok e clique em Iniciar de novo na extensão."
+  },
+  "statusErrorRemove": {
+    "message": "Erro ao remover $1$. Verifique o console.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "panelClose": {
+    "message": "Fechar"
+  },
+  "statsPages": {
+    "message": "Páginas"
+  },
+  "statsRemoved": {
+    "message": "Removidos"
+  },
+  "statsListed": {
+    "message": "Listados"
+  },
+  "statsFailed": {
+    "message": "Falhas"
+  },
+  "statusStoppedFailures": {
+    "message": "Parado: $1$ falhas seguidas. Baixe o relatório para ver quais falharam.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "statusBetweenPages": {
+    "message": "Pausa antes da próxima página…"
   }
 }
