@@ -1,36 +1,57 @@
 {
   "appTitle": {
-    "message": "TikTok All Reposted Videos Remover"
+    "message": "TikTok Cleaner & Remover"
   },
   "step1": {
-    "message": "Be logged in to TikTok, set options below, then click Start. A panel will open on TikTok with progress and Pause/Resume."
+    "message": "Be logged in to TikTok, choose what to remove, set options below, then click Start. A live panel will open on TikTok."
   },
   "step2": {
     "message": "Step 2: Come back here and click the button below to start the process."
   },
   "startButton": {
+    "message": "Start Cleaning"
+  },
+  "targetModeLabel": {
+    "message": "What do you want to remove or audit?"
+  },
+  "targetReposts": {
+    "message": "🔄 Reposts"
+  },
+  "targetLikes": {
+    "message": "❤️ Liked Videos"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favorites (Collections)"
+  },
+  "btnStartReposts": {
     "message": "Start Removing Reposts"
+  },
+  "btnStartLikes": {
+    "message": "Start Removing Liked Videos"
+  },
+  "btnStartFavorites": {
+    "message": "Start Removing Favorites"
   },
   "list1": {
     "message": "The extension will open your TikTok profile"
   },
   "list2": {
-    "message": "Enter the \"Reposts\" tab"
+    "message": "Enter the selected tab"
   },
   "list3": {
-    "message": "Open each reposted video"
+    "message": "Open each video"
   },
   "list4": {
-    "message": "Remove it from your reposts and go to the next"
+    "message": "Remove it and proceed to the next"
   },
   "list5": {
-    "message": "Repeat until all reposted videos are gone"
+    "message": "Repeat until all videos are processed"
   },
   "note": {
     "message": "Use intervals to avoid rate limits. You can Pause and Resume from the in-page panel and download a report when done."
   },
   "tip": {
-    "message": "Tip: Refresh your TikTok profile after finishing to confirm reposts were removed."
+    "message": "Tip: Refresh your TikTok profile after finishing to confirm items were removed."
   },
   "linkLiked": {
     "message": "Remove All Liked Videos"
@@ -51,10 +72,31 @@
     "message": "Sign in to TikTok"
   },
   "configTitle": {
-    "message": "Settings"
+    "message": "Advanced Settings"
   },
   "useKeywords": {
     "message": "Filter by keywords (leave unchecked or empty to remove all)"
+  },
+  "keywordsPlaceholder": {
+    "message": "e.g. cat, memecoin"
+  },
+  "maxRemovalsLabel": {
+    "message": "Limit removals (0 = remove all):"
+  },
+  "useCreators": {
+    "message": "Filter by creators (@user):"
+  },
+  "creatorsPlaceholder": {
+    "message": "e.g. @user1, @user2"
+  },
+  "creatorModeOnly": {
+    "message": "Remove only these creators"
+  },
+  "creatorModeExclude": {
+    "message": "Protect these creators (whitelist)"
+  },
+  "dryRunLabel": {
+    "message": "Dry-run / Simulation mode (scan & report only, do not delete)"
   },
   "intervalMode": {
     "message": "Interval between removals:"
@@ -71,9 +113,6 @@
   "reportFormat": {
     "message": "Report format:"
   },
-  "keywordsPlaceholder": {
-    "message": "e.g. cat, memecoin"
-  },
   "intervalSetPlaceholder": {
     "message": "e.g. 1, 3, 5, 7"
   },
@@ -81,7 +120,7 @@
     "message": "Pause between pages (seconds):"
   },
   "panelTitle": {
-    "message": "TikTok Reposts Remover"
+    "message": "TikTok Cleaner"
   },
   "statusPreparing": {
     "message": "Preparing…"
@@ -105,10 +144,10 @@
     "message": "Waiting for page…"
   },
   "statusListing": {
-    "message": "Listing reposts…"
+    "message": "Listing items…"
   },
   "statusPageRemoving": {
-    "message": "Page $1$: removing $2$ of $3$ items…",
+    "message": "Page $1$: processing $2$ of $3$ items…",
     "placeholders": {
       "1": { "content": "$1" },
       "2": { "content": "$2" },
@@ -116,10 +155,10 @@
     }
   },
   "statusDone": {
-    "message": "Done! All reposts processed."
+    "message": "Done! All items processed."
   },
   "statusNone": {
-    "message": "No reposts found."
+    "message": "No items found."
   },
   "statusErrorNoAccount": {
     "message": "Could not identify your account. Reload TikTok and try again."
@@ -128,7 +167,7 @@
     "message": "You were redirected to For You because you're not logged in. Please log in to TikTok, then open the extension and click Start again."
   },
   "statusErrorRemove": {
-    "message": "Error removing $1$. Check console.",
+    "message": "Error processing $1$. Retrying...",
     "placeholders": {
       "1": { "content": "$1" }
     }
@@ -136,17 +175,41 @@
   "panelClose": {
     "message": "Close"
   },
+  "panelMinimize": {
+    "message": "Minimize"
+  },
+  "panelExpand": {
+    "message": "Expand"
+  },
   "statsPages": {
     "message": "Pages"
   },
   "statsRemoved": {
-    "message": "Removed"
+    "message": "Processed"
   },
   "statsListed": {
     "message": "Listed"
   },
+  "statsSkipped": {
+    "message": "Skipped"
+  },
   "statsFailed": {
     "message": "Failed"
+  },
+  "statsEta": {
+    "message": "ETA"
+  },
+  "statusCooldown": {
+    "message": "Rate limit detected. Safety cooldown: $1$s...",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "statusLimitReached": {
+    "message": "Done! Reached maximum limit of $1$ removals.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
   },
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
@@ -156,5 +219,33 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "dryRunBadge": {
+    "message": "SIMULATION"
+  },
+  "statusDryRunListing": {
+    "message": "Simulation: scanning page $1$ ($2$ items found)...",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "statusDryRunDone": {
+    "message": "Simulation finished! $1$ items found without deleting. Download report to review.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "notificationFinished": {
+    "message": "Finished! Processed $1$ items successfully.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
+  },
+  "notificationLimit": {
+    "message": "Reached removal limit of $1$ items.",
+    "placeholders": {
+      "1": { "content": "$1" }
+    }
   }
 }

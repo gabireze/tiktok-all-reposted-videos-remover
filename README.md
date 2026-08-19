@@ -1,127 +1,86 @@
 # TikTok All Reposted Videos Remover
 
-Remove all your reposted videos on TikTok automatically with a single action.
+Remove all your reposted videos on TikTok automatically with a single action, complete with an in-page dashboard, creator filters, simulation mode, rate-limit auto-cooldown, and downloadable audit reports.
 
 ![Screenshot](demo.png)
 
 ---
 
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/tiktok-all-reposted-videos-remover@github)](https://gitads.dev/v1/ad-track?source=gabireze/tiktok-all-reposted-videos-remover@github)
-
----
-
 ## Features
 
-- Opens your TikTok profile in a new tab automatically  
-- Uses the same authenticated TikTok web APIs as the site to list and remove reposted videos  
-- In-page control panel on TikTok with:
-  - Live status and basic statistics (pages, removed, listed, failures)
-  - Pause / Resume
-  - Downloadable report (JSON or CSV) with removed and failed items  
-- Configurable delay between removals (1–10 seconds, random range or fixed set)  
-- Optional keyword filter to only remove reposts that match certain terms
+- **Automated Profile Detection**: Opens your TikTok profile in a new tab and safely extracts session identifiers with multi-strategy fallbacks.
+- **Smart Rate-Limit Auto-Cooldown**: Detects temporary TikTok limits (429 / status errors) and enters a safety cooldown countdown (35s) before retrying, rather than crashing or terminating.
+- **Modern In-Page Dashboard**:
+  - Live progress bar & metric pills (Pages, Removed, Skipped, Failed, ETA).
+  - Preview card of currently processing video (author and caption).
+  - Minimize button to collapse the panel into a compact floating pill widget.
+  - Pause / Resume controls.
+  - Downloadable audit report (JSON or CSV).
+- **Customizable Filters & Limits**:
+  - **Keyword filter**: Only remove reposts matching specific terms.
+  - **Creator filter & Whitelist**: Remove only specific `@creator` reposts or protect/whitelist favorite creators.
+  - **Max removals limit**: Set a maximum quota (e.g., delete only the last 50 reposts) or set to 0 for all.
+  - **Dry-run / Simulation mode**: Scan and generate a complete report without deleting any video.
+- **Completion Alerts**: Soft synthesized audio chime (Web Audio API) and browser desktop notifications when processing completes.
+- **Multi-language Support**: Native internationalization for **Spanish (Español)**, **English**, **German**, **French**, **Portuguese**, **Turkish**, **Indonesian**, and **Malay**.
 
 ---
 
 ## Installation
 
-### From Chrome Web Store
+### Manual Installation (Developer mode)
 
-[Install from Chrome Web Store](https://chromewebstore.google.com/detail/tiktok-all-reposted-video/amgpfdpibiacligkkkbeonfhmonkgjhg)
-
-### Manual installation (for developers)
-
-1. Clone this repository or download the source code.
-2. Go to `chrome://extensions` in Google Chrome.
-3. Enable **Developer mode** (top right toggle).
-4. Click **"Load unpacked"** and select the project folder.
+1. Clone or download this repository.
+2. In Google Chrome, Brave, or Microsoft Edge, navigate to `chrome://extensions` (or `edge://extensions`).
+3. Turn on **Developer mode** (top right switch).
+4. Click **"Load unpacked"** (Cargar descomprimida) and select this project folder.
 
 ---
 
 ## How to use
 
-1. Make sure you are logged in to your TikTok account at [tiktok.com](https://tiktok.com).
-2. Click the extension icon in the Chrome toolbar.
-3. Configure options in the popup:
-   - Whether to filter by keywords or remove all reposts
-   - Interval mode (random range or fixed set of seconds between removals)
-   - Pause between pages and report format (JSON or CSV)
+1. Log in to your TikTok account on [tiktok.com](https://tiktok.com).
+2. Click the extension icon in your browser toolbar.
+3. Configure your preferences:
+   - **Simulation mode (Dry run)**: Check to scan and generate a report without deleting anything.
+   - **Keywords**: Filter by specific caption terms (optional).
+   - **Creators**: Filter by `@username` and choose whether to remove only them or whitelist/protect them.
+   - **Max removals limit**: Set to 0 to remove all, or enter a number (e.g. 50).
+   - **Interval**: Set random range (e.g. 1s - 3s) to prevent rate limits.
+   - **Report format**: JSON or CSV.
 4. Click **Start Removing Reposts**.
-5. A TikTok tab will open automatically. The in-page panel will appear near the top-right:
-   - Shows current status (preparing, listing, removing, between pages, done)
-   - You can pause or resume the process
-   - You can download a report of removed and failed items at any time once there is data
-6. Keep the tab open until the process finishes. Do not close it during the operation.
-
----
-
-## Behavior details
-
-- When you are not logged in and TikTok redirects `/profile` to `/foryou`, the panel:
-  - Detects that you are not logged in.
-  - Shows a clear message explaining that you must sign in and start again.
-  - Marks the process as paused and disables the pause/resume button.
-- When the extension cannot identify your account (no valid session data found), it shows a similar error message and stops safely.
-- When removing reposts:
-  - Only items that match your keyword filter (if enabled) are removed.
-  - The panel keeps track of pages visited, items listed, items removed, and failures.
-- Failures:
-  - Any failed removal is logged in the panel as a failure.
-  - Failed items are included in the report with a status flag so you can review them later.
-  - If too many removals fail in a row, the extension stops automatically, shows a message, and lets you download the report.
+5. A TikTok tab will open and the in-page panel will appear at the top-right corner.
+6. Keep the tab open until finished. A notification and soft audio chime will let you know when it's done.
 
 ---
 
 ## Report format
 
-The report exported from the panel contains all items that were processed:
-
-- JSON: an object with two arrays
-  - `removed`: items successfully removed
-  - `failed`: items that could not be removed
-- CSV: one table with the following columns
+The exported report includes:
+- **JSON**: `{ "removed": [...], "failed": [...], "skipped": [...] }`
+- **CSV**: Table with columns:
   - `id`
   - `authorName`
   - `desc`
   - `url`
-  - `status` (`removed` or `failed`)
-
-This makes it easy to audit what was removed and what failed, or to keep a backup list of reposted videos.
+  - `status` (`removed`, `failed`, or `skipped_filter`)
+  - `timestamp`
 
 ---
 
 ## Permissions
 
-The extension uses the following Chrome permissions:
+- `host_permissions` (`https://*.tiktok.com/*`): Allows extension scripts to interact with TikTok.
+- `scripting`: Runs content script and extracts session information.
+- `tabs`: Opens and communicates with your TikTok profile tab.
+- `cookies`: Checks login status locally in the popup.
+- `storage`: Saves your preferences locally.
+- `notifications`: Alerts you when removal completes.
 
-- `host_permissions` (`https://*.tiktok.com/*`): allows the extension to run only on TikTok pages.
-- `scripting`: injects and runs the content script on TikTok pages and reads session data needed to identify your account.
-- `tabs`: opens your TikTok profile in a new tab and communicates with that tab.
-- `cookies`: used only in the popup to check whether you are logged in to TikTok (by checking TikTok cookies locally).
-- `storage`: saves your configuration (intervals, keywords, report format, etc.) in your browser.
-
-No analytics, tracking, or external servers are used. All operations happen in your browser, talking directly to TikTok.
-
----
-
-## Important notes
-
-- The process may take time depending on how many reposted videos you have.
-- If TikTok temporarily blocks actions (rate limiting), wait about 1 hour and run the extension again.
-- To confirm everything was removed, refresh your profile after the process completes.
-
----
-
-## Contributing
-
-Contributions are welcome!  
-If you find a bug or have an idea for improvement, feel free to open an issue or a pull request.
+*No external telemetry or tracking servers are used. All actions happen locally within your browser directly to TikTok.*
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/license/mit/).
-
-<!-- GitAds-Verify: 2U3RGGXDR7ECMBBHCE2Q94MLN5LUAPN6 -->
+This project is licensed under the [MIT License](LICENSE).

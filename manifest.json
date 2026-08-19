@@ -12,7 +12,8 @@
     "scripting",
     "tabs",
     "cookies",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "host_permissions": [
     "https://*.tiktok.com/*"

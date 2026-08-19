@@ -1,371 +1,40 @@
 // Mapeamento de países para códigos de moeda do PayPal
 const COUNTRY_CURRENCY_MAP = {
-  US: "USD",
-  CA: "CAD",
-  GB: "GBP",
-  DE: "EUR",
-  FR: "EUR",
-  IT: "EUR",
-  ES: "EUR",
-  NL: "EUR",
-  AU: "AUD",
-  JP: "JPY",
-  BR: "BRL",
-  MX: "MXN",
-  AR: "ARS",
-  CL: "CLP",
-  CO: "COP",
-  PE: "PEN",
-  UY: "UYU",
-  PY: "PYG",
-  BO: "BOB",
-  EC: "USD",
-  VE: "VES",
-  CR: "CRC",
-  PA: "PAB",
-  GT: "GTQ",
-  HN: "HNL",
-  SV: "USD",
-  NI: "NIO",
-  DO: "DOP",
-  CU: "CUP",
-  HT: "HTG",
-  JM: "JMD",
-  BS: "BSD",
-  BB: "BBD",
-  TT: "TTD",
-  GY: "GYD",
-  SR: "SRD",
-  FK: "FKP",
-  CH: "CHF",
-  NO: "NOK",
-  SE: "SEK",
-  DK: "DKK",
-  FI: "EUR",
-  IE: "EUR",
-  AT: "EUR",
-  BE: "EUR",
-  LU: "EUR",
-  PT: "EUR",
-  GR: "EUR",
-  CY: "EUR",
-  MT: "EUR",
-  SK: "EUR",
-  SI: "EUR",
-  EE: "EUR",
-  LV: "EUR",
-  LT: "EUR",
-  PL: "PLN",
-  CZ: "CZK",
-  HU: "HUF",
-  RO: "RON",
-  BG: "BGN",
-  HR: "EUR",
-  RS: "RSD",
-  BA: "BAM",
-  MK: "MKD",
-  AL: "ALL",
-  ME: "EUR",
-  XK: "EUR",
-  MD: "MDL",
-  UA: "UAH",
-  BY: "BYN",
-  RU: "RUB",
-  KZ: "KZT",
-  UZ: "UZS",
-  TJ: "TJS",
-  KG: "KGS",
-  TM: "TMT",
-  AF: "AFN",
-  PK: "PKR",
-  IN: "INR",
-  LK: "LKR",
-  BD: "BDT",
-  NP: "NPR",
-  BT: "BTN",
-  MV: "MVR",
-  CN: "CNY",
-  HK: "HKD",
-  MO: "MOP",
-  TW: "TWD",
-  KR: "KRW",
-  KP: "KPW",
-  MN: "MNT",
-  MM: "MMK",
-  TH: "THB",
-  LA: "LAK",
-  KH: "KHR",
-  VN: "VND",
-  MY: "MYR",
-  SG: "SGD",
-  BN: "BND",
-  ID: "IDR",
-  PH: "PHP",
-  TL: "USD",
-  PG: "PGK",
-  SB: "SBD",
-  VU: "VUV",
-  FJ: "FJD",
-  NC: "XPF",
-  PF: "XPF",
-  WS: "WST",
-  TO: "TOP",
-  KI: "AUD",
-  TV: "AUD",
-  NR: "AUD",
-  MH: "USD",
-  FM: "USD",
-  PW: "USD",
-  AS: "USD",
-  GU: "USD",
-  MP: "USD",
-  PR: "USD",
-  VI: "USD",
-  UM: "USD",
-  NZ: "NZD",
-  CK: "NZD",
-  NU: "NZD",
-  PN: "NZD",
-  TK: "NZD",
+  US: "USD", CA: "CAD", GB: "GBP", DE: "EUR", FR: "EUR", IT: "EUR", ES: "EUR", NL: "EUR",
+  AU: "AUD", JP: "JPY", BR: "BRL", MX: "MXN", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
+  UY: "UYU", PY: "PYG", BOB: "BOB", EC: "USD", VE: "VES", CR: "CRC", PA: "PAB", GT: "GTQ",
+  HN: "HNL", SV: "USD", NI: "NIO", DO: "DOP", CU: "CUP", CH: "CHF", NO: "NOK", SE: "SEK",
+  DK: "DKK", FI: "EUR", IE: "EUR", AT: "EUR", BE: "EUR", PT: "EUR", PL: "PLN", CZ: "CZK"
 };
 
-// Função para detectar o país do usuário usando apenas recursos do navegador
 function detectUserCountry() {
   try {
-    // Método 1: Usar timezone do navegador (mais preciso)
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const timezoneCountryMap = {
-      // Americas
-      "America/Sao_Paulo": "BR",
-      "America/Argentina/Buenos_Aires": "AR",
-      "America/Santiago": "CL",
-      "America/Bogota": "CO",
-      "America/Lima": "PE",
-      "America/Montevideo": "UY",
-      "America/Asuncion": "PY",
-      "America/La_Paz": "BO",
-      "America/Guayaquil": "EC",
-      "America/Caracas": "VE",
-      "America/Costa_Rica": "CR",
-      "America/Panama": "PA",
-      "America/Guatemala": "GT",
-      "America/Tegucigalpa": "HN",
-      "America/El_Salvador": "SV",
-      "America/Managua": "NI",
-      "America/Santo_Domingo": "DO",
-      "America/Havana": "CU",
-      "America/Port-au-Prince": "HT",
-      "America/Jamaica": "JM",
-      "America/New_York": "US",
-      "America/Chicago": "US",
-      "America/Denver": "US",
-      "America/Los_Angeles": "US",
-      "America/Anchorage": "US",
-      "America/Toronto": "CA",
-      "America/Vancouver": "CA",
-      "America/Mexico_City": "MX",
-
-      // Europe
-      "Europe/London": "GB",
-      "Europe/Dublin": "IE",
-      "Europe/Paris": "FR",
-      "Europe/Berlin": "DE",
-      "Europe/Madrid": "ES",
-      "Europe/Rome": "IT",
-      "Europe/Amsterdam": "NL",
-      "Europe/Brussels": "BE",
-      "Europe/Zurich": "CH",
-      "Europe/Vienna": "AT",
-      "Europe/Stockholm": "SE",
-      "Europe/Oslo": "NO",
-      "Europe/Copenhagen": "DK",
-      "Europe/Helsinki": "FI",
-      "Europe/Warsaw": "PL",
-      "Europe/Prague": "CZ",
-      "Europe/Budapest": "HU",
-      "Europe/Bucharest": "RO",
-      "Europe/Sofia": "BG",
-      "Europe/Athens": "GR",
-      "Europe/Lisbon": "PT",
-      "Europe/Moscow": "RU",
-      "Europe/Kiev": "UA",
-
-      // Asia
-      "Asia/Tokyo": "JP",
-      "Asia/Seoul": "KR",
-      "Asia/Shanghai": "CN",
-      "Asia/Hong_Kong": "HK",
-      "Asia/Taipei": "TW",
-      "Asia/Singapore": "SG",
-      "Asia/Bangkok": "TH",
-      "Asia/Jakarta": "ID",
-      "Asia/Manila": "PH",
-      "Asia/Kuala_Lumpur": "MY",
-      "Asia/Ho_Chi_Minh": "VN",
-      "Asia/Kolkata": "IN",
-      "Asia/Karachi": "PK",
-      "Asia/Dhaka": "BD",
-      "Asia/Colombo": "LK",
-      "Asia/Dubai": "AE",
-      "Asia/Riyadh": "SA",
-      "Asia/Tehran": "IR",
-      "Asia/Baghdad": "IQ",
-      "Asia/Jerusalem": "IL",
-
-      // Oceania
-      "Australia/Sydney": "AU",
-      "Australia/Melbourne": "AU",
-      "Australia/Perth": "AU",
-      "Pacific/Auckland": "NZ",
-      "Pacific/Fiji": "FJ",
-
-      // Africa
-      "Africa/Cairo": "EG",
-      "Africa/Lagos": "NG",
-      "Africa/Johannesburg": "ZA",
-      "Africa/Casablanca": "MA",
-      "Africa/Algiers": "DZ",
-      "Africa/Tunis": "TN",
-      "Africa/Nairobi": "KE",
+      "America/Sao_Paulo": "BR", "America/Argentina/Buenos_Aires": "AR", "America/Santiago": "CL",
+      "America/Bogota": "CO", "America/Lima": "PE", "America/Montevideo": "UY", "America/Asuncion": "PY",
+      "America/La_Paz": "BO", "America/Guayaquil": "EC", "America/Caracas": "VE", "America/Costa_Rica": "CR",
+      "America/Panama": "PA", "America/Guatemala": "GT", "America/Mexico_City": "MX", "Europe/Madrid": "ES",
+      "America/New_York": "US", "America/Chicago": "US", "America/Los_Angeles": "US"
     };
-
-    if (timezoneCountryMap[timezone]) {
-      return timezoneCountryMap[timezone];
-    }
-  } catch (error) {
-    console.log("Erro ao detectar país via timezone:", error);
-  }
-
-  try {
-    // Método 2: Usar o locale do navegador
-    const locale = Intl.DateTimeFormat().resolvedOptions().locale;
-    const localeCountryMap = {
-      "pt-BR": "BR",
-      "en-US": "US",
-      "en-GB": "GB",
-      "en-CA": "CA",
-      "en-AU": "AU",
-      "fr-FR": "FR",
-      "fr-CA": "CA",
-      "de-DE": "DE",
-      "de-AT": "AT",
-      "de-CH": "CH",
-      "es-ES": "ES",
-      "es-MX": "MX",
-      "es-AR": "AR",
-      "es-CL": "CL",
-      "es-CO": "CO",
-      "es-PE": "PE",
-      "it-IT": "IT",
-      "it-CH": "CH",
-      "ja-JP": "JP",
-      "ko-KR": "KR",
-      "zh-CN": "CN",
-      "zh-TW": "TW",
-      "zh-HK": "HK",
-      "ru-RU": "RU",
-      "pl-PL": "PL",
-      "nl-NL": "NL",
-      "sv-SE": "SE",
-      "no-NO": "NO",
-      "da-DK": "DK",
-      "fi-FI": "FI",
-      "th-TH": "TH",
-      "vi-VN": "VN",
-      "id-ID": "ID",
-      "ms-MY": "MY",
-      "hi-IN": "IN",
-      "ar-SA": "SA",
-      "ar-EG": "EG",
-      "he-IL": "IL",
-      "tr-TR": "TR",
-      "uk-UA": "UA",
-      "cs-CZ": "CZ",
-      "hu-HU": "HU",
-      "ro-RO": "RO",
-      "bg-BG": "BG",
-      "el-GR": "GR",
-      "hr-HR": "HR",
-      "sk-SK": "SK",
-      "sl-SI": "SI",
-      "et-EE": "EE",
-      "lv-LV": "LV",
-      "lt-LT": "LT",
-    };
-
-    if (localeCountryMap[locale]) {
-      return localeCountryMap[locale];
-    }
-  } catch (error) {
-    console.log("Erro ao detectar país via locale:", error);
-  }
-
-  try {
-    // Método 3: Usar navigator.language como fallback
-    const language = navigator.language || navigator.userLanguage;
-    if (language.includes("-")) {
-      const countryCode = language.split("-")[1].toUpperCase();
-      // Verificar se o código de país existe no nosso mapeamento
-      if (COUNTRY_CURRENCY_MAP[countryCode]) {
-        return countryCode;
-      }
-    }
-
-    // Mapeamento básico por idioma
-    const languageCountryMap = {
-      pt: "BR",
-      en: "US",
-      fr: "FR",
-      de: "DE",
-      es: "ES",
-      it: "IT",
-      ja: "JP",
-      ko: "KR",
-      zh: "CN",
-      ru: "RU",
-      ar: "SA",
-      hi: "IN",
-      th: "TH",
-      vi: "VN",
-      id: "ID",
-      ms: "MY",
-      tr: "TR",
-      pl: "PL",
-      nl: "NL",
-      sv: "SE",
-      no: "NO",
-      da: "DK",
-      fi: "FI",
-    };
-
-    const languageCode = language.split("-")[0].toLowerCase();
-    if (languageCountryMap[languageCode]) {
-      return languageCountryMap[languageCode];
-    }
-  } catch (error) {
-    console.log("Erro ao detectar país via language:", error);
-  }
-
-  // Fallback final: US como padrão
+    if (timezoneCountryMap[timezone]) return timezoneCountryMap[timezone];
+  } catch (e) {}
   return "US";
 }
 
-// Função para abrir doação do PayPal
 function openDonation() {
   const countryCode = detectUserCountry();
   const currencyCode = COUNTRY_CURRENCY_MAP[countryCode] || "USD";
-
   const donationUrl = `https://www.paypal.com/donate/?cmd=_donations&business=S34UMJ23659VY&currency_code=${currencyCode}`;
-
   chrome.tabs.create({ url: donationUrl });
 }
 
 async function checkTiktokLogin() {
   try {
     const cookies = await chrome.cookies.getAll({ domain: "tiktok.com" });
-    const hasMultiSids = cookies.some((c) => c.name === "multi_sids");
-    const hasLivingUserId = cookies.some((c) => c.name === "living_user_id");
-    return !!(hasMultiSids || hasLivingUserId);
+    const hasMultiSids = cookies.some((c) => c.name === "multi_sids" || c.name === "sessionid" || c.name === "sessionid_ss");
+    const hasLivingUserId = cookies.some((c) => c.name === "living_user_id" || c.name === "uid_tt");
+    return !!(hasMultiSids || hasLivingUserId || cookies.length > 5);
   } catch (e) {
     return false;
   }
@@ -374,9 +43,13 @@ async function checkTiktokLogin() {
 const I18N_KEYS_PANEL = [
   "panelTitle", "statusPreparing", "statusPaused", "statusResuming", "btnPause", "btnResume",
   "btnDownloadReport", "statusWaiting", "statusListing", "statusPageRemoving", "statusDone",
-  "statusNone", "statusErrorNoAccount", "statusErrorRedirectedForyou", "statusErrorRemove", "panelClose", "statsPages",
-  "statsRemoved", "statsListed", "statsFailed", "statusStoppedFailures", "statusBetweenPages"
+  "statusNone", "statusErrorNoAccount", "statusErrorRedirectedForyou", "statusErrorRemove", "panelClose",
+  "panelMinimize", "panelExpand", "statsPages", "statsRemoved", "statsListed", "statsSkipped", "statsFailed",
+  "statsEta", "statusCooldown", "statusLimitReached", "statusStoppedFailures", "statusBetweenPages",
+  "dryRunBadge", "statusDryRunListing", "statusDryRunDone", "notificationFinished", "notificationLimit"
 ];
+
+let currentTargetType = "reposts";
 
 function applyI18n() {
   const i18n = typeof chrome !== "undefined" && chrome.i18n ? chrome.i18n : null;
@@ -385,7 +58,7 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     const message = getMsg(key);
-    element.innerHTML = message || element.innerHTML || "";
+    if (message) element.innerHTML = message;
   });
   document.querySelectorAll("[data-i18n-title]").forEach((element) => {
     const key = element.getAttribute("data-i18n-title");
@@ -395,13 +68,28 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     const key = element.getAttribute("data-i18n-placeholder");
     const message = getMsg(key);
-    element.placeholder = message || element.placeholder || "";
+    if (message) element.placeholder = message;
   });
   document.querySelectorAll("option[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     const message = getMsg(key);
-    element.textContent = message || element.textContent || "";
+    if (message) element.textContent = message;
   });
+
+  updateStartButtonLabel();
+}
+
+function updateStartButtonLabel() {
+  const startButton = document.getElementById("startButton");
+  if (!startButton) return;
+  const i18n = typeof chrome !== "undefined" && chrome.i18n ? chrome.i18n : null;
+  const getMsg = (key) => (i18n ? i18n.getMessage(key) : "") || "";
+
+  let key = "btnStartReposts";
+  if (currentTargetType === "likes") key = "btnStartLikes";
+  else if (currentTargetType === "favorites") key = "btnStartFavorites";
+
+  startButton.textContent = getMsg(key) || getMsg("startButton") || "Start Cleaning";
 }
 
 function getPanelI18n() {
@@ -414,22 +102,37 @@ function getPanelI18n() {
 }
 
 function getConfig() {
-  const useKeywords = document.getElementById("useKeywords").checked;
+  const dryRun = document.getElementById("dryRun")?.checked || false;
+  const useKeywords = document.getElementById("useKeywords")?.checked || false;
   const keywordsInput = document.getElementById("keywordsInput");
   const keywordsFilter = useKeywords ? (keywordsInput.value || "").trim() : "";
+
+  const useCreators = document.getElementById("useCreators")?.checked || false;
+  const creatorsInput = document.getElementById("creatorsInput");
+  const creatorsFilter = useCreators ? (creatorsInput.value || "").trim() : "";
+  const creatorMode = document.querySelector('input[name="creatorMode"]:checked')?.value || "only";
+
+  const maxRemovals = Math.max(0, parseInt(document.getElementById("maxRemovals")?.value, 10) || 0);
+
   const intervalMode = document.getElementById("intervalMode").value;
   let intervalMin = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMin").value, 10) || 1));
   let intervalMax = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMax").value, 10) || 3));
   if (intervalMin > intervalMax) intervalMax = intervalMin;
-  const intervalSetStr = (document.getElementById("intervalSet").value || "1,3,5")
+  const intervalSetStr = (document.getElementById("intervalSet").value || "1, 3, 5")
     .split(",")
     .map((s) => parseInt(s.trim(), 10))
     .filter((n) => !isNaN(n) && n >= 0);
   const requestIntervalSet = intervalSetStr.length ? intervalSetStr : [1, 3, 5];
   const reportFormat = document.getElementById("reportFormat").value;
   const pagePause = Math.max(0, Math.min(120, parseInt(document.getElementById("pagePause").value, 10) || 5));
+
   return {
+    targetType: currentTargetType,
+    dryRun,
     keywordsFilter,
+    creatorsFilter,
+    creatorMode,
+    maxRemovals,
     requestIntervalMode: intervalMode,
     requestIntervalRange: { min: intervalMin, max: intervalMax },
     requestIntervalSet,
@@ -452,18 +155,49 @@ function loadSavedConfig() {
     const c = data && data.trrConfig;
     if (!c) return;
     try {
+      if (c.targetType) {
+        currentTargetType = c.targetType;
+        document.querySelectorAll(".popup-target-pill").forEach((pill) => {
+          pill.classList.toggle("is-active", pill.getAttribute("data-target") === currentTargetType);
+        });
+        updateStartButtonLabel();
+      }
+
+      if (c.dryRun != null) document.getElementById("dryRun").checked = !!c.dryRun;
       if (c.useKeywords != null) document.getElementById("useKeywords").checked = !!c.useKeywords;
       const kw = document.getElementById("keywordsInput");
       if (kw) {
         if (c.keywordsFilter) kw.value = c.keywordsFilter;
         kw.disabled = !document.getElementById("useKeywords").checked;
       }
+
+      if (c.useCreators != null) document.getElementById("useCreators").checked = !!c.useCreators;
+      const cr = document.getElementById("creatorsInput");
+      const crGroup = document.getElementById("creatorModeGroup");
+      if (cr) {
+        if (c.creatorsFilter) cr.value = c.creatorsFilter;
+        cr.disabled = !document.getElementById("useCreators").checked;
+      }
+      if (crGroup) {
+        crGroup.style.display = document.getElementById("useCreators").checked ? "flex" : "none";
+      }
+      if (c.creatorMode) {
+        const rad = document.querySelector(`input[name="creatorMode"][value="${c.creatorMode}"]`);
+        if (rad) rad.checked = true;
+      }
+
+      if (c.maxRemovals != null) {
+        const mr = document.getElementById("maxRemovals");
+        if (mr) mr.value = c.maxRemovals;
+      }
+
       if (c.requestIntervalMode) document.getElementById("intervalMode").value = c.requestIntervalMode;
       const isRange = document.getElementById("intervalMode").value === "range";
       const rangeGrp = document.getElementById("intervalRangeGroup");
       const setGrp = document.getElementById("intervalSetGroup");
       if (rangeGrp) rangeGrp.style.display = isRange ? "flex" : "none";
       if (setGrp) setGrp.style.display = isRange ? "none" : "flex";
+
       if (c.requestIntervalRange) {
         const minEl = document.getElementById("intervalMin");
         const maxEl = document.getElementById("intervalMax");
@@ -496,7 +230,7 @@ function loadSavedConfig() {
         if (pp) pp.value = Math.max(0, c.pagePauseSeconds);
       }
     } catch (err) {
-      console.warn("TikTok Reposts Remover: loadSavedConfig", err);
+      console.warn("TikTok Cleaner: loadSavedConfig", err);
     }
   });
 }
@@ -508,8 +242,14 @@ function saveConfig(config) {
   try {
     storage.set({
       trrConfig: {
+        targetType: config.targetType,
+        dryRun: config.dryRun,
         useKeywords: !!config.keywordsFilter,
         keywordsFilter: config.keywordsFilter,
+        useCreators: !!config.creatorsFilter,
+        creatorsFilter: config.creatorsFilter,
+        creatorMode: config.creatorMode,
+        maxRemovals: config.maxRemovals,
         requestIntervalMode: config.requestIntervalMode,
         requestIntervalRange: config.requestIntervalRange,
         requestIntervalSet: config.requestIntervalSet,
@@ -518,7 +258,7 @@ function saveConfig(config) {
       },
     });
   } catch (err) {
-    console.warn("TikTok Reposts Remover: saveConfig", err);
+    console.warn("TikTok Cleaner: saveConfig", err);
   }
 }
 
@@ -529,22 +269,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("startButton");
   const useKeywords = document.getElementById("useKeywords");
   const keywordsInput = document.getElementById("keywordsInput");
+  const useCreators = document.getElementById("useCreators");
+  const creatorsInput = document.getElementById("creatorsInput");
+  const creatorModeGroup = document.getElementById("creatorModeGroup");
   const intervalMode = document.getElementById("intervalMode");
   const intervalRangeGroup = document.getElementById("intervalRangeGroup");
   const intervalSetGroup = document.getElementById("intervalSetGroup");
 
-  // Toggle configuração (slide)
+  // Target Selector Pills
+  document.querySelectorAll(".popup-target-pill").forEach((pill) => {
+    pill.addEventListener("click", function () {
+      document.querySelectorAll(".popup-target-pill").forEach((p) => p.classList.remove("is-active"));
+      this.classList.add("is-active");
+      currentTargetType = this.getAttribute("data-target") || "reposts";
+      updateStartButtonLabel();
+      saveConfig(getConfig());
+    });
+  });
+
+  // Toggle configuración
   const configSection = document.querySelector(".popup-config");
   const configToggle = document.getElementById("configToggle");
-  const configBody = document.getElementById("configBody");
-  if (configSection && configToggle && configBody) {
+  if (configSection && configToggle) {
     configToggle.addEventListener("click", function () {
       const isClosed = configSection.classList.toggle("is-closed");
       configToggle.setAttribute("aria-expanded", isClosed ? "false" : "true");
     });
   }
 
-  // Menu dropdown (clique)
+  // Menu dropdown
   const menuBtn = document.getElementById("menuBtn");
   const menuDropdown = document.getElementById("menuDropdown");
   if (menuBtn && menuDropdown) {
@@ -563,9 +316,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  useKeywords.addEventListener("change", function () {
-    keywordsInput.disabled = !this.checked;
-  });
+  // Checkboxes switches
+  if (useKeywords && keywordsInput) {
+    useKeywords.addEventListener("change", function () {
+      keywordsInput.disabled = !this.checked;
+      if (this.checked) keywordsInput.focus();
+    });
+  }
+
+  if (useCreators && creatorsInput && creatorModeGroup) {
+    useCreators.addEventListener("change", function () {
+      creatorsInput.disabled = !this.checked;
+      creatorModeGroup.style.display = this.checked ? "flex" : "none";
+      if (this.checked) creatorsInput.focus();
+    });
+  }
+
+  // Dual Range Slider Logic
   const INTERVAL_MIN = 1;
   const INTERVAL_MAX = 10;
 
@@ -609,11 +376,13 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDualRangeDisplay();
   }
 
-  intervalMode.addEventListener("change", function () {
-    const isRange = this.value === "range";
-    intervalRangeGroup.style.display = isRange ? "flex" : "none";
-    intervalSetGroup.style.display = isRange ? "none" : "flex";
-  });
+  if (intervalMode) {
+    intervalMode.addEventListener("change", function () {
+      const isRange = this.value === "range";
+      intervalRangeGroup.style.display = isRange ? "flex" : "none";
+      intervalSetGroup.style.display = isRange ? "none" : "flex";
+    });
+  }
 
   const loginButton = document.getElementById("loginButton");
   checkTiktokLogin().then((isLoggedIn) => {
@@ -632,6 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
   if (loginButton) {
     loginButton.addEventListener("click", () => {
       chrome.tabs.create({ url: "https://www.tiktok.com/login", active: true });
