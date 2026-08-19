@@ -24,7 +24,7 @@ body {
   font-size: 13px;
   background: var(--bg);
   color: var(--text);
-  width: 380px;
+  width: 415px;
   min-height: 340px;
 }
 
@@ -168,8 +168,9 @@ body {
 }
 
 .popup-target-pills {
-  display: flex;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
   background: var(--surface);
   padding: 4px;
   border-radius: var(--radius);
@@ -177,8 +178,9 @@ body {
 }
 
 .popup-target-pill {
-  flex: 1;
-  padding: 8px 6px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 4px;
   border: none;
   background: transparent;
   color: var(--muted);
@@ -188,6 +190,8 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   text-align: center;
 }
 

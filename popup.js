@@ -102,6 +102,9 @@ function getPanelI18n() {
 }
 
 function getConfig() {
+  const activePill = document.querySelector(".popup-target-pill.is-active");
+  const targetType = (activePill && activePill.getAttribute("data-target")) || currentTargetType || "reposts";
+
   const dryRun = document.getElementById("dryRun")?.checked || false;
   const useKeywords = document.getElementById("useKeywords")?.checked || false;
   const keywordsInput = document.getElementById("keywordsInput");
@@ -115,19 +118,19 @@ function getConfig() {
   const maxRemovals = Math.max(0, parseInt(document.getElementById("maxRemovals")?.value, 10) || 0);
 
   const intervalMode = document.getElementById("intervalMode").value;
-  let intervalMin = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMin").value, 10) || 1));
-  let intervalMax = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMax").value, 10) || 3));
+  let intervalMin = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMin").value, 10) || 2));
+  let intervalMax = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMax").value, 10) || 4));
   if (intervalMin > intervalMax) intervalMax = intervalMin;
-  const intervalSetStr = (document.getElementById("intervalSet").value || "1, 3, 5")
+  const intervalSetStr = (document.getElementById("intervalSet").value || "2, 4, 6")
     .split(",")
     .map((s) => parseInt(s.trim(), 10))
     .filter((n) => !isNaN(n) && n >= 0);
-  const requestIntervalSet = intervalSetStr.length ? intervalSetStr : [1, 3, 5];
+  const requestIntervalSet = intervalSetStr.length ? intervalSetStr : [2, 4, 6];
   const reportFormat = document.getElementById("reportFormat").value;
-  const pagePause = Math.max(0, Math.min(120, parseInt(document.getElementById("pagePause").value, 10) || 5));
+  const pagePause = Math.max(0, Math.min(120, parseInt(document.getElementById("pagePause").value, 10) || 8));
 
   return {
-    targetType: currentTargetType,
+    targetType: targetType,
     dryRun,
     keywordsFilter,
     creatorsFilter,

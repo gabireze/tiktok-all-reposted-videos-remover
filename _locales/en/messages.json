@@ -18,10 +18,10 @@
     "message": "🔄 Reposts"
   },
   "targetLikes": {
-    "message": "❤️ Liked Videos"
+    "message": "❤️ Likes"
   },
   "targetFavorites": {
-    "message": "⭐ Favorites (Collections)"
+    "message": "⭐ Favorites"
   },
   "btnStartReposts": {
     "message": "Start Removing Reposts"

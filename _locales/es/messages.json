@@ -18,10 +18,10 @@
     "message": "🔄 Reposts"
   },
   "targetLikes": {
-    "message": "❤️ Me Gusta (Likes)"
+    "message": "❤️ Me Gusta"
   },
   "targetFavorites": {
-    "message": "⭐ Favoritos (Guardados)"
+    "message": "⭐ Favoritos"
   },
   "btnStartReposts": {
     "message": "Iniciar eliminación de Reposts"
