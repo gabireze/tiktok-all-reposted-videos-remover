@@ -346,8 +346,8 @@
       const v = arr[Math.floor(Math.random() * arr.length)] ?? 2;
       return Math.max(1.5, v) * 1000 + Math.floor(Math.random() * 300);
     }
-    const { min = 2, max = 3.5 } = config.requestIntervalRange || {};
-    const a = Math.max(1.5, min);
+    const { min = 1, max = 5 } = config.requestIntervalRange || {};
+    const a = Math.max(1, min);
     const b = Math.max(a, max);
     const sec = a + Math.random() * (b - a);
     return sec * 1000 + Math.floor(Math.random() * 250);

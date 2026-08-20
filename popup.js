@@ -118,8 +118,8 @@ function getConfig() {
   const maxRemovals = Math.max(0, parseInt(document.getElementById("maxRemovals")?.value, 10) || 0);
 
   const intervalMode = document.getElementById("intervalMode").value;
-  let intervalMin = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMin").value, 10) || 2));
-  let intervalMax = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMax").value, 10) || 4));
+  let intervalMin = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMin").value, 10) || 1));
+  let intervalMax = Math.max(1, Math.min(10, parseInt(document.getElementById("intervalMax").value, 10) || 5));
   if (intervalMin > intervalMax) intervalMax = intervalMin;
   const intervalSetStr = (document.getElementById("intervalSet").value || "2, 4, 6")
     .split(",")
@@ -150,13 +150,41 @@ function getStorage() {
   return null;
 }
 
+const INTERVAL_MIN = 1;
+const INTERVAL_MAX = 10;
+
+function updateDualRangeDisplay() {
+  const minEl = document.getElementById("intervalMin");
+  const maxEl = document.getElementById("intervalMax");
+  const fillEl = document.getElementById("intervalRangeFill");
+  const displayEl = document.getElementById("intervalRangeDisplay");
+  if (!minEl || !maxEl) return;
+  let min = Math.max(INTERVAL_MIN, Math.min(INTERVAL_MAX, parseInt(minEl.value, 10) || 1));
+  let max = Math.max(INTERVAL_MIN, Math.min(INTERVAL_MAX, parseInt(maxEl.value, 10) || 5));
+  if (min > max) max = min;
+  if (max < min) min = max;
+  minEl.value = min;
+  maxEl.value = max;
+  const range = INTERVAL_MAX - INTERVAL_MIN;
+  const pctMin = ((min - INTERVAL_MIN) / range) * 100;
+  const pctWidth = ((max - min) / range) * 100;
+  if (fillEl) {
+    fillEl.style.left = pctMin + "%";
+    fillEl.style.width = pctWidth + "%";
+  }
+  if (displayEl) displayEl.textContent = min + "s – " + max + "s";
+}
+
 function loadSavedConfig() {
   const storage = getStorage();
   if (!storage) return;
 
   storage.get("trrConfig", (data) => {
     const c = data && data.trrConfig;
-    if (!c) return;
+    if (!c) {
+      updateDualRangeDisplay();
+      return;
+    }
     try {
       if (c.targetType) {
         currentTargetType = c.targetType;
@@ -204,25 +232,21 @@ function loadSavedConfig() {
       if (c.requestIntervalRange) {
         const minEl = document.getElementById("intervalMin");
         const maxEl = document.getElementById("intervalMax");
-        const minVal = Math.max(1, Math.min(10, c.requestIntervalRange.min ?? 1));
-        const maxVal = Math.max(1, Math.min(10, c.requestIntervalRange.max ?? 3));
+        let minVal = Math.max(1, Math.min(10, c.requestIntervalRange.min ?? 1));
+        let maxVal = Math.max(1, Math.min(10, c.requestIntervalRange.max ?? 5));
+        
+        // Si tenía guardado el valor anterior por defecto (3s o 4s), migrar automáticamente a 5s
+        if (maxVal === 3 || maxVal === 4) {
+          maxVal = 5;
+        }
+
         if (minEl) minEl.value = minVal;
         if (maxEl) maxEl.value = Math.max(minVal, maxVal);
-        const fillEl = document.getElementById("intervalRangeFill");
-        const displayEl = document.getElementById("intervalRangeDisplay");
-        if (minEl && maxEl) {
-          const min = parseInt(minEl.value, 10) || 1;
-          const max = parseInt(maxEl.value, 10) || 3;
-          const range = 10 - 1;
-          const pctMin = ((min - 1) / range) * 100;
-          const pctWidth = ((max - min) / range) * 100;
-          if (fillEl) {
-            fillEl.style.left = pctMin + "%";
-            fillEl.style.width = pctWidth + "%";
-          }
-          if (displayEl) displayEl.textContent = min + "s – " + max + "s";
-        }
+        updateDualRangeDisplay();
+      } else {
+        updateDualRangeDisplay();
       }
+
       if (c.requestIntervalSet && c.requestIntervalSet.length) {
         const setEl = document.getElementById("intervalSet");
         if (setEl) setEl.value = c.requestIntervalSet.join(", ");
@@ -333,32 +357,6 @@ document.addEventListener("DOMContentLoaded", function () {
       creatorModeGroup.style.display = this.checked ? "flex" : "none";
       if (this.checked) creatorsInput.focus();
     });
-  }
-
-  // Dual Range Slider Logic
-  const INTERVAL_MIN = 1;
-  const INTERVAL_MAX = 10;
-
-  function updateDualRangeDisplay() {
-    const minEl = document.getElementById("intervalMin");
-    const maxEl = document.getElementById("intervalMax");
-    const fillEl = document.getElementById("intervalRangeFill");
-    const displayEl = document.getElementById("intervalRangeDisplay");
-    if (!minEl || !maxEl) return;
-    let min = Math.max(INTERVAL_MIN, Math.min(INTERVAL_MAX, parseInt(minEl.value, 10) || INTERVAL_MIN));
-    let max = Math.max(INTERVAL_MIN, Math.min(INTERVAL_MAX, parseInt(maxEl.value, 10) || INTERVAL_MAX));
-    if (min > max) max = min;
-    if (max < min) min = max;
-    minEl.value = min;
-    maxEl.value = max;
-    const range = INTERVAL_MAX - INTERVAL_MIN;
-    const pctMin = ((min - INTERVAL_MIN) / range) * 100;
-    const pctWidth = ((max - min) / range) * 100;
-    if (fillEl) {
-      fillEl.style.left = pctMin + "%";
-      fillEl.style.width = pctWidth + "%";
-    }
-    if (displayEl) displayEl.textContent = min + "s – " + max + "s";
   }
 
   const intervalMinEl = document.getElementById("intervalMin");

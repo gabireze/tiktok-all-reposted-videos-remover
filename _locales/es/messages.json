@@ -155,9 +155,15 @@
   "statusPageRemoving": {
     "message": "Pág $1$: procesando $2$ de $3$ videos...",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -175,7 +181,9 @@
   "statusErrorRemove": {
     "message": "Error al procesar $1$. Reintentando...",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -208,19 +216,25 @@
   "statusCooldown": {
     "message": "Límite detectado. Pausa de seguridad: $1$s...",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusLimitReached": {
     "message": "¡Límite alcanzado! Se procesaron $1$ videos según lo configurado.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusStoppedFailures": {
     "message": "Detenido tras $1$ fallos consecutivos. Descarga el reporte para revisar los videos con error.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
@@ -232,26 +246,36 @@
   "statusDryRunListing": {
     "message": "Modo Simulación: escaneando página $1$ ($2$ videos encontrados)...",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
     }
   },
   "statusDryRunDone": {
     "message": "¡Simulación finalizada! Se listaron $1$ videos sin eliminarlos. Puedes descargar el reporte.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "notificationFinished": {
     "message": "¡Finalizado! Se procesaron $1$ videos correctamente.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "notificationLimit": {
     "message": "Se completó el límite de $1$ videos procesados.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   }
 }

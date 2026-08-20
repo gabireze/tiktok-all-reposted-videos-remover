@@ -225,24 +225,57 @@
     "message": "Sisa Waktu"
   },
   "statusCooldown": {
-    "message": "Batas terdeteksi. Jeda keamanan: $1$d..."
+    "message": "Batas terdeteksi. Jeda keamanan: $1$d...",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "statusLimitReached": {
-    "message": "Selesai! Batas maksimum $1$ penghapusan tercapai."
+    "message": "Selesai! Batas maksimum $1$ penghapusan tercapai.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "dryRunBadge": {
     "message": "SIMULASI"
   },
   "statusDryRunListing": {
-    "message": "Simulasi: memindai halaman $1$ ($2$ item ditemukan)..."
+    "message": "Simulasi: memindai halaman $1$ ($2$ item ditemukan)...",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
   },
   "statusDryRunDone": {
-    "message": "Simulasi selesai! $1$ item ditemukan tanpa dihapus. Unduh laporan untuk meninjau."
+    "message": "Simulasi selesai! $1$ item ditemukan tanpa dihapus. Unduh laporan untuk meninjau.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "notificationFinished": {
-    "message": "Selesai! $1$ item berhasil diproses."
+    "message": "Selesai! $1$ item berhasil diproses.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "notificationLimit": {
-    "message": "Batas penghapusan $1$ item tercapai."
+    "message": "Batas penghapusan $1$ item tercapai.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   }
 }

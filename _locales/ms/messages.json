@@ -225,24 +225,57 @@
     "message": "Baki Masa"
   },
   "statusCooldown": {
-    "message": "Had kadar dikesan. Bertenang keselamatan: $1$s..."
+    "message": "Had kadar dikesan. Bertenang keselamatan: $1$s...",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "statusLimitReached": {
-    "message": "Selesai! Had maksimum $1$ pemadaman telah dicapai."
+    "message": "Selesai! Had maksimum $1$ pemadaman telah dicapai.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "dryRunBadge": {
     "message": "SIMULASI"
   },
   "statusDryRunListing": {
-    "message": "Simulasi: mengimbas halaman $1$ ($2$ item dijumpai)..."
+    "message": "Simulasi: mengimbas halaman $1$ ($2$ item dijumpai)...",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
   },
   "statusDryRunDone": {
-    "message": "Simulasi selesai! $1$ item disenaraikan tanpa dipadam. Muat turun laporan."
+    "message": "Simulasi selesai! $1$ item disenaraikan tanpa dipadam. Muat turun laporan.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "notificationFinished": {
-    "message": "Selesai! $1$ item berjaya diproses."
+    "message": "Selesai! $1$ item berjaya diproses.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   },
   "notificationLimit": {
-    "message": "Had pemadaman $1$ item dicapai."
+    "message": "Had pemadaman $1$ item dicapai.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
   }
 }
