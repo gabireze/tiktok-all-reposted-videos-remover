@@ -45,7 +45,7 @@
     "message": "Hapus Semua Video Favorit"
   },
   "linkGitHub": {
-    "message": "Repositori GitHub"
+    "message": "Repositori GitHub (FapCod)"
   },
   "donateTooltip": {
     "message": "Dukung proyek ini"
@@ -277,5 +277,11 @@
         "content": "$1"
       }
     }
+  },
+  "githubProfileTooltip": {
+    "message": "GitHub: @FapCod"
+  },
+  "linkGitHubOriginal": {
+    "message": "Repositori Asli (gabireze)"
   }
 }

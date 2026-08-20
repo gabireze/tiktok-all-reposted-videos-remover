@@ -45,7 +45,7 @@
     "message": "Padam Semua Video Kegemaran"
   },
   "linkGitHub": {
-    "message": "Repositori GitHub"
+    "message": "Repositori GitHub (FapCod)"
   },
   "donateTooltip": {
     "message": "Sokong projek ini"
@@ -277,5 +277,11 @@
         "content": "$1"
       }
     }
+  },
+  "githubProfileTooltip": {
+    "message": "GitHub: @FapCod"
+  },
+  "linkGitHubOriginal": {
+    "message": "Repositori Asal (gabireze)"
   }
 }

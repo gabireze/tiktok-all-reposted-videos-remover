@@ -92,6 +92,17 @@ body {
   transform: scale(1.05);
 }
 
+#githubProfileBtn {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+#githubProfileBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.08);
+}
+
 #donateButton {
   color: var(--accent);
 }
@@ -110,7 +121,7 @@ body {
   top: 100%;
   right: 0;
   margin-top: 4px;
-  min-width: 190px;
+  min-width: 230px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);

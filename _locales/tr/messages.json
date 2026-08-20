@@ -45,7 +45,7 @@
     "message": "Tüm Favori Videoları Kaldır"
   },
   "linkGitHub": {
-    "message": "GitHub Deposu"
+    "message": "GitHub Deposu (FapCod)"
   },
   "donateTooltip": {
     "message": "Projeyi destekle"
@@ -277,5 +277,11 @@
         "content": "$1"
       }
     }
+  },
+  "githubProfileTooltip": {
+    "message": "GitHub: @FapCod"
+  },
+  "linkGitHubOriginal": {
+    "message": "Orijinal Depo (gabireze)"
   }
 }

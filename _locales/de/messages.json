@@ -45,7 +45,7 @@
     "message": "Alle Favoriten-Videos entfernen"
   },
   "linkGitHub": {
-    "message": "GitHub-Repository"
+    "message": "GitHub-Repository (FapCod)"
   },
   "donateTooltip": {
     "message": "Projekt unterstützen"
@@ -277,5 +277,11 @@
         "content": "$1"
       }
     }
+  },
+  "githubProfileTooltip": {
+    "message": "GitHub: @FapCod"
+  },
+  "linkGitHubOriginal": {
+    "message": "Original-Repository (gabireze)"
   }
 }
