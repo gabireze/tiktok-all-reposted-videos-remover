@@ -26,6 +26,12 @@
   "list5": {
     "message": "Répéter jusqu'à suppression de tous les reposts"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Recommandation :</strong> Gardez TikTok ouvert dans votre navigateur, de préférence sur l'onglet à nettoyer (Republications, J'aime ou Favoris)."
+  },
+  "adviceRetry": {
+    "message": "Si le processus ne démarre pas du premier coup, <strong>recliquez sur le bouton pour réessayer</strong>."
+  },
   "note": {
     "message": "Remarque : Si vous avez beaucoup de vidéos repostées, le processus peut être long. TikTok peut temporairement bloquer les actions si elles sont trop nombreuses. Attendez environ 1 heure et réessayez."
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Page $1$: removing $2$ of $3$ items…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Error removing $1$. Check console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "targetModeLabel": {
+    "message": "Que souhaitez-vous supprimer ou auditer ?"
+  },
+  "targetReposts": {
+    "message": "🔄 Reposts"
+  },
+  "targetLikes": {
+    "message": "❤️ J'aime"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favoris"
+  },
+  "btnStartReposts": {
+    "message": "Démarrer la suppression des reposts"
+  },
+  "btnStartLikes": {
+    "message": "Démarrer la suppression des j'aime"
+  },
+  "btnStartFavorites": {
+    "message": "Démarrer la suppression des favoris"
+  },
+  "maxRemovalsLabel": {
+    "message": "Limite de suppressions (0 = tout supprimer) :"
+  },
+  "useCreators": {
+    "message": "Filtrar par créateurs (@utilisateur) :"
+  },
+  "creatorsPlaceholder": {
+    "message": "ex. @utilisateur1, @utilisateur2"
+  },
+  "creatorModeOnly": {
+    "message": "Supprimer uniquement ces créateurs"
+  },
+  "creatorModeExclude": {
+    "message": "Protéger ces créateurs (liste blanche)"
+  },
+  "dryRunLabel": {
+    "message": "Mode Simulation (scanner et exporter sans supprimer)"
+  },
+  "panelMinimize": {
+    "message": "Réduire"
+  },
+  "panelExpand": {
+    "message": "Agrandir"
+  },
+  "statsSkipped": {
+    "message": "Ignorés"
+  },
+  "statsEta": {
+    "message": "Temps restant"
+  },
+  "statusCooldown": {
+    "message": "Limite détectée. Pause de sécurité : $1$s..."
+  },
+  "statusLimitReached": {
+    "message": "Terminé ! Limite maximale de $1$ suppressions atteinte."
+  },
+  "dryRunBadge": {
+    "message": "SIMULATION"
+  },
+  "statusDryRunListing": {
+    "message": "Simulation : scan de la page $1$ ($2$ éléments trouvés)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simulation terminée ! $1$ éléments répertoriés sans suppression. Téléchargez le rapport."
+  },
+  "notificationFinished": {
+    "message": "Terminé ! $1$ éléments traités avec succès."
+  },
+  "notificationLimit": {
+    "message": "Limite de suppression de $1$ éléments atteinte."
   }
 }

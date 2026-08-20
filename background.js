@@ -1,33 +1,34 @@
-function getSecUidInPage() {
+function getUserInfoInPage() {
   try {
+    var result = { secUid: null, uniqueId: null };
+
+    function checkUser(u) {
+      if (!u) return;
+      if (!result.secUid && u.secUid) result.secUid = String(u.secUid);
+      if (!result.uniqueId) {
+        var un = u.uniqueId || u.unique_id || u.uniqueID || u.handle;
+        if (un && typeof un === "string" && un.trim()) {
+          result.uniqueId = un.trim().replace(/^@/, "");
+        }
+      }
+    }
+
     // 1. Objeto __$UNIVERSAL_DATA$__
     var w = window.__$UNIVERSAL_DATA$__;
     if (w && w.__DEFAULT_SCOPE__) {
       var scope = w.__DEFAULT_SCOPE__;
-      if (scope["webapp.app-context"] && scope["webapp.app-context"].user && scope["webapp.app-context"].user.secUid) {
-        return scope["webapp.app-context"].user.secUid;
-      }
-      if (scope["webapp.user-detail"] && scope["webapp.user-detail"].userInfo && scope["webapp.user-detail"].userInfo.user && scope["webapp.user-detail"].userInfo.user.secUid) {
-        return scope["webapp.user-detail"].userInfo.user.secUid;
-      }
-      if (scope["webapp.user-detail"] && scope["webapp.user-detail"].user && scope["webapp.user-detail"].user.secUid) {
-        return scope["webapp.user-detail"].user.secUid;
-      }
+      if (scope["webapp.app-context"] && scope["webapp.app-context"].user) checkUser(scope["webapp.app-context"].user);
+      if (scope["webapp.user-detail"] && scope["webapp.user-detail"].userInfo && scope["webapp.user-detail"].userInfo.user) checkUser(scope["webapp.user-detail"].userInfo.user);
+      if (scope["webapp.user-detail"] && scope["webapp.user-detail"].user) checkUser(scope["webapp.user-detail"].user);
     }
 
     // 2. Objeto __UNIVERSAL_DATA_FOR_REHYDRATION__
     var wRehydrate = window.__UNIVERSAL_DATA_FOR_REHYDRATION__;
     if (wRehydrate && wRehydrate.__DEFAULT_SCOPE__) {
       var scope2 = wRehydrate.__DEFAULT_SCOPE__;
-      if (scope2["webapp.app-context"] && scope2["webapp.app-context"].user && scope2["webapp.app-context"].user.secUid) {
-        return scope2["webapp.app-context"].user.secUid;
-      }
-      if (scope2["webapp.user-detail"] && scope2["webapp.user-detail"].userInfo && scope2["webapp.user-detail"].userInfo.user && scope2["webapp.user-detail"].userInfo.user.secUid) {
-        return scope2["webapp.user-detail"].userInfo.user.secUid;
-      }
-      if (scope2["webapp.user-detail"] && scope2["webapp.user-detail"].user && scope2["webapp.user-detail"].user.secUid) {
-        return scope2["webapp.user-detail"].user.secUid;
-      }
+      if (scope2["webapp.app-context"] && scope2["webapp.app-context"].user) checkUser(scope2["webapp.app-context"].user);
+      if (scope2["webapp.user-detail"] && scope2["webapp.user-detail"].userInfo && scope2["webapp.user-detail"].userInfo.user) checkUser(scope2["webapp.user-detail"].userInfo.user);
+      if (scope2["webapp.user-detail"] && scope2["webapp.user-detail"].user) checkUser(scope2["webapp.user-detail"].user);
     }
 
     // 3. Tag <script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"> o <script id="__$UNIVERSAL_DATA$__">
@@ -37,12 +38,8 @@ function getSecUidInPage() {
         var parsed = JSON.parse(scriptEl.textContent);
         if (parsed && parsed.__DEFAULT_SCOPE__) {
           var scope3 = parsed.__DEFAULT_SCOPE__;
-          if (scope3["webapp.app-context"] && scope3["webapp.app-context"].user && scope3["webapp.app-context"].user.secUid) {
-            return scope3["webapp.app-context"].user.secUid;
-          }
-          if (scope3["webapp.user-detail"] && scope3["webapp.user-detail"].userInfo && scope3["webapp.user-detail"].userInfo.user && scope3["webapp.user-detail"].userInfo.user.secUid) {
-            return scope3["webapp.user-detail"].userInfo.user.secUid;
-          }
+          if (scope3["webapp.app-context"] && scope3["webapp.app-context"].user) checkUser(scope3["webapp.app-context"].user);
+          if (scope3["webapp.user-detail"] && scope3["webapp.user-detail"].userInfo && scope3["webapp.user-detail"].userInfo.user) checkUser(scope3["webapp.user-detail"].userInfo.user);
         }
       } catch (e) {}
     }
@@ -50,44 +47,93 @@ function getSecUidInPage() {
     // 4. SIGI_STATE
     if (window.SIGI_STATE) {
       var sigi = window.SIGI_STATE;
-      if (sigi.AppContext && sigi.AppContext.user && sigi.AppContext.user.secUid) {
-        return sigi.AppContext.user.secUid;
-      }
+      if (sigi.AppContext && sigi.AppContext.user) checkUser(sigi.AppContext.user);
       if (sigi.UserModule && sigi.UserModule.users) {
         var keys = Object.keys(sigi.UserModule.users);
         for (var i = 0; i < keys.length; i++) {
-          if (sigi.UserModule.users[keys[i]].secUid) {
-            return sigi.UserModule.users[keys[i]].secUid;
+          checkUser(sigi.UserModule.users[keys[i]]);
+        }
+      }
+    }
+
+    // 5. Script SIGI_STATE en DOM
+    var sigiScript = document.getElementById("SIGI_STATE") || document.getElementById("sigi-persisted-data");
+    if (sigiScript && sigiScript.textContent) {
+      try {
+        var parsedSigi = JSON.parse(sigiScript.textContent);
+        if (parsedSigi.AppContext && parsedSigi.AppContext.user) checkUser(parsedSigi.AppContext.user);
+      } catch (e) {}
+    }
+
+    // 6. DOM: Enlaces al perfil en el header o avatar
+    if (!result.uniqueId) {
+      var profileLinks = Array.from(document.querySelectorAll('a[href*="/@"]'));
+      for (var p = 0; p < profileLinks.length; p++) {
+        var href = profileLinks[p].getAttribute("href") || "";
+        var m = href.match(/\/@([a-zA-Z0-9_\.\-]+)/);
+        if (m && m[1] && m[1].toLowerCase() !== "tiktok" && !href.includes("/video/")) {
+          if (
+            profileLinks[p].closest("header") ||
+            profileLinks[p].querySelector("img") ||
+            profileLinks[p].getAttribute("data-e2e")?.includes("profile")
+          ) {
+            result.uniqueId = m[1];
+            break;
           }
         }
       }
     }
 
-    // 5. Script SIGI_STATE no DOM
-    var sigiScript = document.getElementById("SIGI_STATE") || document.getElementById("sigi-persisted-data");
-    if (sigiScript && sigiScript.textContent) {
-      try {
-        var parsedSigi = JSON.parse(sigiScript.textContent);
-        if (parsedSigi.AppContext && parsedSigi.AppContext.user && parsedSigi.AppContext.user.secUid) {
-          return parsedSigi.AppContext.user.secUid;
-        }
-      } catch (e) {}
+    // 7. Si la URL actual ya es un perfil /@usuario
+    if (!result.uniqueId && window.location.pathname.startsWith("/@")) {
+      var mPath = window.location.pathname.match(/^\/@([a-zA-Z0-9_\.\-]+)/);
+      if (mPath && mPath[1]) {
+        result.uniqueId = mPath[1];
+      }
     }
 
-    // 6. Regex no HTML completo da página
+    // 8. Regex fallback en HTML completo
     var html = document.documentElement.innerHTML || "";
-    var match = html.match(/"secUid"\s*:\s*"([a-zA-Z0-9_\-]{30,})"/);
-    if (match && match[1]) {
-      return match[1];
+    if (!result.secUid) {
+      var matchSec = html.match(/"secUid"\s*:\s*"([a-zA-Z0-9_\-]{30,})"/);
+      if (matchSec && matchSec[1]) result.secUid = matchSec[1];
+    }
+    if (!result.uniqueId) {
+      var matchUniq = html.match(/"uniqueId"\s*:\s*"([a-zA-Z0-9_\.\-]{2,30})"/);
+      if (matchUniq && matchUniq[1]) result.uniqueId = matchUniq[1];
     }
 
-    return null;
+    return result;
   } catch (e) {
-    return null;
+    return { secUid: null, uniqueId: null };
   }
 }
 
+function getSecUidInPage() {
+  var info = getUserInfoInPage();
+  return info.secUid || null;
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "getUserInfo") {
+    var tabId = sender.tab && sender.tab.id;
+    if (!tabId) {
+      sendResponse({ userInfo: { secUid: null, uniqueId: null } });
+      return true;
+    }
+    chrome.scripting.executeScript(
+      { target: { tabId }, world: "MAIN", func: getUserInfoInPage },
+      function (results) {
+        var info = (results && results[0] && results[0].result) || { secUid: null, uniqueId: null };
+        if (info.uniqueId) {
+          chrome.storage.local.set({ tiktok_username: info.uniqueId });
+        }
+        sendResponse({ userInfo: info });
+      }
+    );
+    return true;
+  }
+
   if (request.action === "getSecUid") {
     var tabId = sender.tab && sender.tab.id;
     if (!tabId) {
@@ -318,49 +364,96 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "startRemovingReposts") {
     const config = request.payload?.config || {};
 
-    // Comprueba si la pestaña activa ya es TikTok
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const activeTab = tabs && tabs[0];
-      const isAlreadyOnTiktok = activeTab && activeTab.url && activeTab.url.includes("tiktok.com");
+    function sendConfigToTab(tabId, attempt) {
+      attempt = attempt || 0;
+      const payload = { ...config, notLoggedInRedirect: false };
+      chrome.tabs.sendMessage(tabId, { action: "startRemovingReposts", config: payload })
+        .catch((e) => {
+          if (attempt < 5) {
+            setTimeout(() => sendConfigToTab(tabId, attempt + 1), 700);
+          }
+        });
+    }
 
-      if (isAlreadyOnTiktok) {
-        // Ejecuta directamente sobre la pestaña actual sin reiniciar la navegación ni cambiar la vista
-        const payload = { ...config, notLoggedInRedirect: false };
-        function sendDirectConfig(attempt) {
-          chrome.tabs.sendMessage(activeTab.id, { action: "startRemovingReposts", config: payload })
-            .catch((e) => {
-              if (attempt < 4) setTimeout(() => sendDirectConfig(attempt + 1), 600);
-            });
-        }
-        sendDirectConfig(0);
-      } else {
-        // Si no está en TikTok, abre la pestaña de perfil
-        chrome.tabs.create({ url: "https://www.tiktok.com/profile", active: true }, (tab) => {
-          const tabId = tab.id;
-          const listener = (id, info) => {
-            if (id === tabId && info.status === "complete") {
-              chrome.tabs.onUpdated.removeListener(listener);
-              setTimeout(() => {
-                chrome.tabs.get(tabId, (tabInfo) => {
-                  const url = (tabInfo && tabInfo.url) || "";
-                  const isForyou = /\/foryou(\?|$)/i.test(url);
-                  const isLogin = /\/login(\?|$|\/)/i.test(url);
-                  const notLoggedInRedirect = isForyou || isLogin;
-                  const payload = { ...config, notLoggedInRedirect };
-                  function sendConfig(attempt) {
-                    chrome.tabs.sendMessage(tabId, { action: "startRemovingReposts", config: payload })
-                      .catch((e) => {
-                        if (attempt < 4) setTimeout(() => sendConfig(attempt + 1), 800);
-                      });
-                  }
-                  sendConfig(0);
-                });
-              }, 3000);
+    function navigateToProfileAndStart(tabId, username) {
+      const targetUrl = `https://www.tiktok.com/@${username}`;
+      chrome.tabs.get(tabId, (tab) => {
+        if (!tab) return;
+        const currentUrl = tab.url || "";
+        const isAlreadyOnUserProfile = new RegExp(`tiktok\\.com/@${username}(\\?|/|$)`, "i").test(currentUrl);
+
+        if (isAlreadyOnUserProfile) {
+          setTimeout(() => sendConfigToTab(tabId, 0), 500);
+        } else {
+          let updatedDone = false;
+          const navListener = (updatedTabId, changeInfo) => {
+            if (updatedTabId === tabId && changeInfo.status === "complete" && !updatedDone) {
+              updatedDone = true;
+              chrome.tabs.onUpdated.removeListener(navListener);
+              setTimeout(() => sendConfigToTab(tabId, 0), 1800);
             }
           };
-          chrome.tabs.onUpdated.addListener(listener);
-        });
-      }
+          chrome.tabs.onUpdated.addListener(navListener);
+          chrome.tabs.update(tabId, { url: targetUrl, active: true });
+        }
+      });
+    }
+
+    function inspectAndStartTab(tabId) {
+      chrome.scripting.executeScript(
+        { target: { tabId }, world: "MAIN", func: getUserInfoInPage },
+        (results) => {
+          const userInfo = (results && results[0] && results[0].result) || {};
+          const detectedUser = userInfo.uniqueId;
+
+          if (detectedUser) {
+            chrome.storage.local.set({ tiktok_username: detectedUser });
+            navigateToProfileAndStart(tabId, detectedUser);
+          } else {
+            chrome.storage.local.get(["tiktok_username"], (stored) => {
+              const savedUser = stored?.tiktok_username;
+              if (savedUser) {
+                navigateToProfileAndStart(tabId, savedUser);
+              } else {
+                sendConfigToTab(tabId, 0);
+              }
+            });
+          }
+        }
+      );
+    }
+
+    chrome.storage.local.get(["tiktok_username"], (stored) => {
+      const cachedUsername = stored?.tiktok_username;
+
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const activeTab = tabs && tabs[0];
+        const isAlreadyOnTiktok = activeTab && activeTab.url && activeTab.url.includes("tiktok.com");
+
+        if (isAlreadyOnTiktok) {
+          inspectAndStartTab(activeTab.id);
+        } else {
+          // Si no está en TikTok, abrir directamente @usuario si está guardado, o la home de tiktok
+          const startUrl = cachedUsername
+            ? `https://www.tiktok.com/@${cachedUsername}`
+            : `https://www.tiktok.com/`;
+
+          chrome.tabs.create({ url: startUrl, active: true }, (newTab) => {
+            const tabId = newTab.id;
+            let tabDone = false;
+            const listener = (id, info) => {
+              if (id === tabId && info.status === "complete" && !tabDone) {
+                tabDone = true;
+                chrome.tabs.onUpdated.removeListener(listener);
+                setTimeout(() => {
+                  inspectAndStartTab(tabId);
+                }, 2000);
+              }
+            };
+            chrome.tabs.onUpdated.addListener(listener);
+          });
+        }
+      });
     });
 
     sendResponse({ ok: true });

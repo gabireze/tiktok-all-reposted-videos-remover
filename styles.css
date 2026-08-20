@@ -540,6 +540,43 @@ body {
   color: var(--text);
 }
 
+/* ----- Advice & Tip Box ----- */
+.popup-advice-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 242, 234, 0.22);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin: 2px 0;
+  box-shadow: inset 0 0 12px rgba(0, 242, 234, 0.03);
+}
+
+.popup-advice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #cfcfcf;
+  line-height: 1.38;
+}
+
+.popup-advice-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.popup-advice-text {
+  flex: 1;
+}
+
+.popup-advice-text strong {
+  color: var(--accent-alt);
+  font-weight: 600;
+}
+
 /* ----- Note & tip ----- */
 .popup-note,
 .popup-tip {

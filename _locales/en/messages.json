@@ -47,6 +47,12 @@
   "list5": {
     "message": "Repeat until all videos are processed"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Recommendation:</strong> Keep TikTok open in your browser, ideally on the section you want to clean (Reposts, Likes, or Favorites)."
+  },
+  "adviceRetry": {
+    "message": "If the button does not respond on the first try, <strong>click it again to retry</strong>."
+  },
   "note": {
     "message": "Use intervals to avoid rate limits. You can Pause and Resume from the in-page panel and download a report when done."
   },

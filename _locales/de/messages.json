@@ -20,6 +20,12 @@
   "list3": {
     "message": "Öffne jedes erneut gepostete Video"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Empfehlung:</strong> Halte TikTok im Browser geöffnet, am besten auf dem Tab, den du bereinigen möchtest (Reposts, Likes oder Favoriten)."
+  },
+  "adviceRetry": {
+    "message": "Falls der Vorgang beim ersten Klick nicht startet, <strong>klicke bitte erneut auf die Schaltfläche</strong>."
+  },
   "list4": {
     "message": "Entferne das Video aus den Reposts und gehe zum nächsten"
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Page $1$: removing $2$ of $3$ items…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Error removing $1$. Check console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "targetModeLabel": {
+    "message": "Was möchtest du entfernen oder prüfen?"
+  },
+  "targetReposts": {
+    "message": "🔄 Reposts"
+  },
+  "targetLikes": {
+    "message": "❤️ Likes"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favoriten"
+  },
+  "btnStartReposts": {
+    "message": "Reposts-Entfernung starten"
+  },
+  "btnStartLikes": {
+    "message": "Likes-Entfernung starten"
+  },
+  "btnStartFavorites": {
+    "message": "Favoriten-Entfernung starten"
+  },
+  "maxRemovalsLabel": {
+    "message": "Limit für Entfernungen (0 = alle):"
+  },
+  "useCreators": {
+    "message": "Nach Erstellern filtern (@benutzer):"
+  },
+  "creatorsPlaceholder": {
+    "message": "z.B. @benutzer1, @benutzer2"
+  },
+  "creatorModeOnly": {
+    "message": "Nur diese Ersteller entfernen"
+  },
+  "creatorModeExclude": {
+    "message": "Diese Ersteller schützen (Whitelist)"
+  },
+  "dryRunLabel": {
+    "message": "Simulationsmodus (nur scannen & Bericht erstellen, nicht löschen)"
+  },
+  "panelMinimize": {
+    "message": "Minimieren"
+  },
+  "panelExpand": {
+    "message": "Erweitern"
+  },
+  "statsSkipped": {
+    "message": "Übersprungen"
+  },
+  "statsEta": {
+    "message": "Verbleibend"
+  },
+  "statusCooldown": {
+    "message": "Ratenbegrenzung erkannt. Sicherheits-Pause: $1$s..."
+  },
+  "statusLimitReached": {
+    "message": "Fertig! Maximales Limit von $1$ Entfernungen erreicht."
+  },
+  "dryRunBadge": {
+    "message": "SIMULATION"
+  },
+  "statusDryRunListing": {
+    "message": "Simulation: Scanne Seite $1$ ($2$ Elemente gefunden)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simulation beendet! $1$ Elemente ohne Löschen gefunden. Bericht herunterladen."
+  },
+  "notificationFinished": {
+    "message": "Fertig! $1$ Elemente erfolgreich verarbeitet."
+  },
+  "notificationLimit": {
+    "message": "Entfernungslimit von $1$ Elementen erreicht."
   }
 }

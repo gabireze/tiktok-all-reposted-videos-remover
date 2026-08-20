@@ -26,6 +26,12 @@
   "list5": {
     "message": "Repetirá até que todos os reposts sejam removidos"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Recomendação:</strong> Mantenha o TikTok aberto no navegador, de preferência na aba que deseja limpar (Reposts, Curtidas ou Favoritos)."
+  },
+  "adviceRetry": {
+    "message": "Se o processo não iniciar na primeira tentativa, <strong>clique novamente no botão para tentar de novo</strong>."
+  },
   "note": {
     "message": "Use intervalos para evitar bloqueios. Você pode Pausar e Continuar pelo painel na página e baixar um relatório ao terminar."
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Página $1$: removendo $2$ de $3$ itens…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Erro ao remover $1$. Verifique o console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Parado: $1$ falhas seguidas. Baixe o relatório para ver quais falharam.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pausa antes da próxima página…"
+  },
+  "targetModeLabel": {
+    "message": "O que você deseja remover ou auditar?"
+  },
+  "targetReposts": {
+    "message": "🔄 Reposts"
+  },
+  "targetLikes": {
+    "message": "❤️ Curtidas"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favoritos"
+  },
+  "btnStartReposts": {
+    "message": "Iniciar remoção de Reposts"
+  },
+  "btnStartLikes": {
+    "message": "Iniciar remoção de Curtidas"
+  },
+  "btnStartFavorites": {
+    "message": "Iniciar remoção de Favoritos"
+  },
+  "maxRemovalsLabel": {
+    "message": "Limite de remoções (0 = sem limite):"
+  },
+  "useCreators": {
+    "message": "Filtrar por criadores (@usuario):"
+  },
+  "creatorsPlaceholder": {
+    "message": "ex. @usuario1, @usuario2"
+  },
+  "creatorModeOnly": {
+    "message": "Remover apenas estes criadores"
+  },
+  "creatorModeExclude": {
+    "message": "Proteger estes criadores (não remover)"
+  },
+  "dryRunLabel": {
+    "message": "Modo Simulação (apenas escanear e gerar relatório, sem excluir)"
+  },
+  "panelMinimize": {
+    "message": "Minimizar"
+  },
+  "panelExpand": {
+    "message": "Expandir"
+  },
+  "statsSkipped": {
+    "message": "Ignorados"
+  },
+  "statsEta": {
+    "message": "Restante"
+  },
+  "statusCooldown": {
+    "message": "Limite detectado. Pausa de segurança: $1$s..."
+  },
+  "statusLimitReached": {
+    "message": "Concluído! Limite máximo de $1$ remoções atingido."
+  },
+  "dryRunBadge": {
+    "message": "SIMULAÇÃO"
+  },
+  "statusDryRunListing": {
+    "message": "Modo Simulação: escaneando página $1$ ($2$ itens encontrados)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simulação concluída! $1$ itens listados sem exclusão. Baixe o relatório para revisar."
+  },
+  "notificationFinished": {
+    "message": "Concluído! $1$ itens processados com sucesso."
+  },
+  "notificationLimit": {
+    "message": "Limite de remoção de $1$ itens atingido."
   }
 }

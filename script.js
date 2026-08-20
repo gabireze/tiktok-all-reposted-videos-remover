@@ -52,6 +52,15 @@
     } catch (e) {}
   }
 
+  /** Pide al background la información de usuario (secUid y username/uniqueId). */
+  function getUserInfoAsync() {
+    return new Promise(function (resolve) {
+      chrome.runtime.sendMessage({ action: "getUserInfo" }, function (response) {
+        resolve(response && response.userInfo ? response.userInfo : { secUid: null, uniqueId: null });
+      });
+    });
+  }
+
   /** Pide al background el secUid (leído en el contexto MAIN con múltiples fallbacks). */
   function getSecUidAsync() {
     return new Promise(function (resolve) {
@@ -966,6 +975,17 @@
 
     panelState.status = `Abriendo tu pestaña de ${targetLabel}...`;
     updatePanel(panel, panelState, t);
+
+    // Si no estamos en la página de perfil @usuario (por ejemplo en /foryou o en el home), redirigir al perfil
+    if (!window.location.pathname.startsWith("/@")) {
+      panelState.status = "Redirigiendo a tu perfil de TikTok...";
+      updatePanel(panel, panelState, t);
+      const uInfo = await getUserInfoAsync();
+      if (uInfo && uInfo.uniqueId) {
+        window.location.href = `https://www.tiktok.com/@${uInfo.uniqueId}`;
+        return;
+      }
+    }
 
     // 1. Localiza y asegura que la pestaña correspondiente esté activa en el perfil
     async function ensureCorrectTabActive() {

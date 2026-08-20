@@ -26,6 +26,12 @@
   "list5": {
     "message": "Ulangi sampai semua video repost dihapus"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Rekomendasi:</strong> Buka TikTok di browser Anda, sebaiknya pada tab yang ingin dibersihkan (Repost, Suka, atau Favorit)."
+  },
+  "adviceRetry": {
+    "message": "Jika proses tidak dimulai pada klik pertama, <strong>silakan klik tombol lagi untuk mencoba kembali</strong>."
+  },
   "note": {
     "message": "Catatan: Jika Anda memiliki banyak video repost, prosesnya bisa memakan waktu. TikTok mungkin memblokir sementara jika terlalu banyak aksi dalam waktu singkat. Tunggu sekitar 1 jam dan coba lagi."
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Page $1$: removing $2$ of $3$ items…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Error removing $1$. Check console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "targetModeLabel": {
+    "message": "Apa yang ingin Anda hapus atau audit?"
+  },
+  "targetReposts": {
+    "message": "🔄 Repost"
+  },
+  "targetLikes": {
+    "message": "❤️ Suka"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favorit"
+  },
+  "btnStartReposts": {
+    "message": "Mulai Menghapus Repost"
+  },
+  "btnStartLikes": {
+    "message": "Mulai Menghapus Video yang Disukai"
+  },
+  "btnStartFavorites": {
+    "message": "Mulai Menghapus Favorit"
+  },
+  "maxRemovalsLabel": {
+    "message": "Batas penghapusan (0 = hapus semua):"
+  },
+  "useCreators": {
+    "message": "Filter berdasarkan kreator (@pengguna):"
+  },
+  "creatorsPlaceholder": {
+    "message": "cth. @pengguna1, @pengguna2"
+  },
+  "creatorModeOnly": {
+    "message": "Hapus hanya kreator ini"
+  },
+  "creatorModeExclude": {
+    "message": "Lindungi kreator ini (jangan hapus)"
+  },
+  "dryRunLabel": {
+    "message": "Mode Simulasi (hanya memindai & membuat laporan, tidak menghapus)"
+  },
+  "panelMinimize": {
+    "message": "Minimalkan"
+  },
+  "panelExpand": {
+    "message": "Perluas"
+  },
+  "statsSkipped": {
+    "message": "Dilewati"
+  },
+  "statsEta": {
+    "message": "Sisa Waktu"
+  },
+  "statusCooldown": {
+    "message": "Batas terdeteksi. Jeda keamanan: $1$d..."
+  },
+  "statusLimitReached": {
+    "message": "Selesai! Batas maksimum $1$ penghapusan tercapai."
+  },
+  "dryRunBadge": {
+    "message": "SIMULASI"
+  },
+  "statusDryRunListing": {
+    "message": "Simulasi: memindai halaman $1$ ($2$ item ditemukan)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simulasi selesai! $1$ item ditemukan tanpa dihapus. Unduh laporan untuk meninjau."
+  },
+  "notificationFinished": {
+    "message": "Selesai! $1$ item berhasil diproses."
+  },
+  "notificationLimit": {
+    "message": "Batas penghapusan $1$ item tercapai."
   }
 }

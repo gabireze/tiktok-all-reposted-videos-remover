@@ -47,6 +47,12 @@
   "list5": {
     "message": "Repetirá hasta que todos los videos hayan sido procesados"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Recomendación:</strong> Ten TikTok abierto en tu navegador, idealmente en la sección que deseas limpiar (Reposts, Me Gusta o Favoritos)."
+  },
+  "adviceRetry": {
+    "message": "Si el botón no inicia o responde a la primera, <strong>vuelve a hacer clic para reintentar</strong>."
+  },
   "note": {
     "message": "Usa intervalos para evitar bloqueos por límite de peticiones. Puedes Pausar, Reanudar y descargar el reporte desde el panel flotante."
   },

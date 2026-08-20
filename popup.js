@@ -416,11 +416,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (startButton.disabled) return;
     const config = getConfig();
     saveConfig(config);
+    startButton.textContent = "⏳ Conectando...";
+    startButton.style.opacity = "0.85";
     chrome.runtime.sendMessage({
       action: "startRemovingReposts",
       payload: { config },
     });
-    window.close();
+    setTimeout(() => {
+      window.close();
+    }, 350);
   });
 
   const donateButton = document.getElementById("donateButton");

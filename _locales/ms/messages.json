@@ -26,6 +26,12 @@
   "list5": {
     "message": "Ulangi sehingga semua repost dipadamkan"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Cadangan:</strong> Biarkan TikTok dibuka dalam penyemak imbas anda, sebaiknya pada tab yang ingin anda bersihkan (Siaran Semula, Suka, atau Kegemaran)."
+  },
+  "adviceRetry": {
+    "message": "Jika proses tidak bermula pada klik pertama, <strong>sila klik butang sekali lagi untuk mencuba semula</strong>."
+  },
   "note": {
     "message": "Nota: Jika anda mempunyai banyak video repost, proses ini mungkin mengambil masa. TikTok mungkin menyekat tindakan buat sementara waktu jika terlalu banyak dilakukan. Tunggu kira-kira 1 jam dan cuba semula."
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Page $1$: removing $2$ of $3$ items…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Error removing $1$. Check console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "targetModeLabel": {
+    "message": "Apakah yang anda ingin padam atau audit?"
+  },
+  "targetReposts": {
+    "message": "🔄 Siaran Semula"
+  },
+  "targetLikes": {
+    "message": "❤️ Suka"
+  },
+  "targetFavorites": {
+    "message": "⭐ Kegemaran"
+  },
+  "btnStartReposts": {
+    "message": "Mula Memadam Siaran Semula"
+  },
+  "btnStartLikes": {
+    "message": "Mula Memadam Video Disukai"
+  },
+  "btnStartFavorites": {
+    "message": "Mula Memadam Kegemaran"
+  },
+  "maxRemovalsLabel": {
+    "message": "Had pemadaman (0 = padam semua):"
+  },
+  "useCreators": {
+    "message": "Tapis mengikut pencipta (@pengguna):"
+  },
+  "creatorsPlaceholder": {
+    "message": "cth. @pengguna1, @pengguna2"
+  },
+  "creatorModeOnly": {
+    "message": "Padamkan pencipta ini sahaja"
+  },
+  "creatorModeExclude": {
+    "message": "Lindungi pencipta ini (jangan padam)"
+  },
+  "dryRunLabel": {
+    "message": "Mod Simulasi (imbas & laporan sahaja, jangan padam)"
+  },
+  "panelMinimize": {
+    "message": "Kecilkan"
+  },
+  "panelExpand": {
+    "message": "Kembangkan"
+  },
+  "statsSkipped": {
+    "message": "Dilangkau"
+  },
+  "statsEta": {
+    "message": "Baki Masa"
+  },
+  "statusCooldown": {
+    "message": "Had kadar dikesan. Bertenang keselamatan: $1$s..."
+  },
+  "statusLimitReached": {
+    "message": "Selesai! Had maksimum $1$ pemadaman telah dicapai."
+  },
+  "dryRunBadge": {
+    "message": "SIMULASI"
+  },
+  "statusDryRunListing": {
+    "message": "Simulasi: mengimbas halaman $1$ ($2$ item dijumpai)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simulasi selesai! $1$ item disenaraikan tanpa dipadam. Muat turun laporan."
+  },
+  "notificationFinished": {
+    "message": "Selesai! $1$ item berjaya diproses."
+  },
+  "notificationLimit": {
+    "message": "Had pemadaman $1$ item dicapai."
   }
 }

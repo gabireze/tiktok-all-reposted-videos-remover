@@ -26,6 +26,12 @@
   "list5": {
     "message": "Tüm yeniden paylaşımlar silinene kadar tekrarlayın"
   },
+  "adviceRecommendation": {
+    "message": "<strong>Öneri:</strong> TikTok'u tarayıcınızda açık tutun, tercihen temizlemek istediğiniz sekmede (Yeniden Paylaşımlar, Beğeniler veya Favoriler)."
+  },
+  "adviceRetry": {
+    "message": "İşlem ilk tıklamada başlamazsa, <strong>tekrar denemek için butona bir kez daha tıklayın</strong>."
+  },
   "note": {
     "message": "Not: Eğer çok sayıda yeniden paylaşılan videonuz varsa, işlem uzun sürebilir. TikTok çok fazla işlem yapılırsa geçici olarak engelleme uygulayabilir. Yaklaşık 1 saat bekleyip tekrar deneyin."
   },
@@ -110,9 +116,15 @@
   "statusPageRemoving": {
     "message": "Page $1$: removing $2$ of $3$ items…",
     "placeholders": {
-      "1": { "content": "$1" },
-      "2": { "content": "$2" },
-      "3": { "content": "$3" }
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      }
     }
   },
   "statusDone": {
@@ -130,7 +142,9 @@
   "statusErrorRemove": {
     "message": "Error removing $1$. Check console.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "panelClose": {
@@ -151,10 +165,84 @@
   "statusStoppedFailures": {
     "message": "Stopped: $1$ consecutive failures. Download report to see which failed.",
     "placeholders": {
-      "1": { "content": "$1" }
+      "1": {
+        "content": "$1"
+      }
     }
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
+  },
+  "targetModeLabel": {
+    "message": "Neyi silmek veya denetlemek istiyorsunuz?"
+  },
+  "targetReposts": {
+    "message": "🔄 Yeniden Paylaşımlar"
+  },
+  "targetLikes": {
+    "message": "❤️ Beğeniler"
+  },
+  "targetFavorites": {
+    "message": "⭐ Favoriler"
+  },
+  "btnStartReposts": {
+    "message": "Yeniden Paylaşımları Silmeyi Başlat"
+  },
+  "btnStartLikes": {
+    "message": "Beğenilen Videoları Silmeyi Başlat"
+  },
+  "btnStartFavorites": {
+    "message": "Favorileri Silmeyi Başlat"
+  },
+  "maxRemovalsLabel": {
+    "message": "Silme limiti (0 = tümünü sil):"
+  },
+  "useCreators": {
+    "message": "İçerik üreticisine göre filtrele (@kullanıcı):"
+  },
+  "creatorsPlaceholder": {
+    "message": "örn. @kullanıcı1, @kullanıcı2"
+  },
+  "creatorModeOnly": {
+    "message": "Yalnızca bu üreticileri sil"
+  },
+  "creatorModeExclude": {
+    "message": "Bu üreticileri koru (silme)"
+  },
+  "dryRunLabel": {
+    "message": "Simülasyon Modu (yalnızca tara ve raporla, silme)"
+  },
+  "panelMinimize": {
+    "message": "Küçült"
+  },
+  "panelExpand": {
+    "message": "Genişlet"
+  },
+  "statsSkipped": {
+    "message": "Atlanan"
+  },
+  "statsEta": {
+    "message": "Kalan Süre"
+  },
+  "statusCooldown": {
+    "message": "İşlem limiti algılandı. Güvenlik beklemesi: $1$sn..."
+  },
+  "statusLimitReached": {
+    "message": "Tamamlandı! Maksimum $1$ silme limitine ulaşıldı."
+  },
+  "dryRunBadge": {
+    "message": "SİMÜLASYON"
+  },
+  "statusDryRunListing": {
+    "message": "Simülasyon: Sayfa $1$ taranıyor ($2$ video bulundu)..."
+  },
+  "statusDryRunDone": {
+    "message": "Simülasyon tamamlandı! $1$ video silinmeden listelendi. Raporu indirin."
+  },
+  "notificationFinished": {
+    "message": "Tamamlandı! $1$ öğe başarıyla işlendi."
+  },
+  "notificationLimit": {
+    "message": "$1$ öğe silme sınırına ulaşıldı."
   }
 }
