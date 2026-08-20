@@ -1166,6 +1166,11 @@
         if (likeBtn) {
           likeBtn.click();
           await sleep(600);
+          panelState.removed++;
+          panelState.reportItems.push({ id: window.location.href, authorName, desc: descText, url: window.location.href });
+          panelState.status = `✅ Like eliminado (${panelState.removed}): ${authorName}`;
+        } else {
+          panelState.skipped++;
         }
       } else if (targetType === "favorites") {
         const favBtn =
@@ -1178,6 +1183,11 @@
         if (favBtn) {
           favBtn.click();
           await sleep(600);
+          panelState.removed++;
+          panelState.reportItems.push({ id: window.location.href, authorName, desc: descText, url: window.location.href });
+          panelState.status = `✅ Favorito eliminado (${panelState.removed}): ${authorName}`;
+        } else {
+          panelState.skipped++;
         }
       } else {
         // targetType === "reposts"
