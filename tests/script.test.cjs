@@ -59,8 +59,10 @@ async function testFinishedPanelHidesRunControls() {
 }
 
 async function testListingAndAllPageCollection() {
+  const events = [];
   const api = loadWithFetch(async (url) => {
     const cursor = new URL(url).searchParams.get("cursor");
+    events.push(`fetch:${cursor}`);
     const first = cursor === "0";
     return {
       ok: true,
@@ -75,9 +77,14 @@ async function testListingAndAllPageCollection() {
       }),
     };
   });
-  const result = await api.collectAllRepostItems("sec-test", { pagePauseMs: 0, diagnostics: [] });
+  const result = await api.collectAllRepostItems("sec-test", {
+    pagePauseMs: 0,
+    diagnostics: [],
+    async onPage({ page }) { events.push(`process:${page}`); },
+  });
   assert.deepEqual(Array.from(result.items, (item) => item.id), ["1", "2", "3"]);
   assert.equal(result.pages, 2);
+  assert.deepEqual(events, ["fetch:0", "process:1", "fetch:30", "process:2"]);
 }
 
 async function testListingErrorsStayErrors() {

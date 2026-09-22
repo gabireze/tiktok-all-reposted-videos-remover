@@ -27,7 +27,7 @@
     "message": "Ulangi sehingga semua repost dipadamkan"
   },
   "note": {
-    "message": "Sambungan mengimbas dahulu dan meminta pengesahan sebelum memadam apa-apa. Anda boleh jeda, berhenti dan memuat turun laporan yang disahkan."
+    "message": "Sambungan memeriksa halaman pertama, meminta pengesahan, kemudian memproses satu halaman pada satu masa. Anda boleh menjeda, menghentikan dan memuat turun laporan yang disahkan."
   },
   "tip": {
     "message": "Pengesahan akhir memisahkan pemadaman disahkan, repost yang masih ada dan kegagalan."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Mengesahkan hasil dengan TikTok…" },
   "statusVerificationPage": { "message": "Pengesahan halaman $1$: $2$ repost masih disenaraikan…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Selesai dan disahkan: $1$ repost dipadam.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Pengesahan selesai: $1$ dipadam, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Pengesahan selesai: $1$ dipadam, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "Halaman pertama: $1$ daripada $2$ item sepadan. Sahkan pemprosesan halaman demi halaman.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Mulakan pemadaman halaman demi halaman" }
 }

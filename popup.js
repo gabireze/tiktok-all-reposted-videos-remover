@@ -369,7 +369,8 @@ const I18N_KEYS_PANEL = [
   "statusBetweenScanPages", "statusRateLimited", "statusSessionRejected", "statsMatched",
   "btnConfirmRemoval", "btnCancel", "statsVerified", "statsRemaining", "statsProcessed",
   "statusNoMatches", "statusReadyToRemove", "statusRemovingProgress", "statusVerifying",
-  "statusVerificationPage", "statusVerifiedDone", "statusPartial"
+  "statusVerificationPage", "statusVerifiedDone", "statusPartial",
+  "statusReadyPageByPage", "btnConfirmPageByPage"
 ];
 
 function applyI18n() {

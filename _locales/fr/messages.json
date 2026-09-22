@@ -27,7 +27,7 @@
     "message": "Répéter jusqu'à suppression de tous les reposts"
   },
   "note": {
-    "message": "L’extension analyse d’abord et demande confirmation avant toute suppression. Vous pouvez mettre en pause, arrêter et télécharger un rapport vérifié."
+    "message": "L’extension vérifie la première page, demande confirmation, puis traite une page à la fois. Vous pouvez mettre en pause, arrêter et télécharger un rapport vérifié."
   },
   "tip": {
     "message": "La vérification finale distingue les suppressions confirmées, les reposts restants et les échecs."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Vérification du résultat avec TikTok…" },
   "statusVerificationPage": { "message": "Vérification page $1$ : $2$ reposts encore listés…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Terminé et vérifié : $1$ reposts supprimés.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Vérification terminée : $1$ supprimés, $2$ encore présents.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Vérification terminée : $1$ supprimés, $2$ encore présents.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "Première page : $1$ élément(s) sur $2$ correspondent. Confirmez le traitement page par page.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Démarrer la suppression page par page" }
 }

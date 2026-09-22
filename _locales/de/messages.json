@@ -27,7 +27,7 @@
     "message": "Wiederhole dies, bis alle Reposts entfernt wurden"
   },
   "note": {
-    "message": "Die Erweiterung scannt zuerst und bittet um Bestätigung, bevor etwas entfernt wird. Du kannst pausieren, stoppen und einen geprüften Bericht herunterladen."
+    "message": "Die Erweiterung prüft die erste Seite, bittet um Bestätigung und verarbeitet dann eine Seite nach der anderen. Du kannst pausieren, stoppen und einen geprüften Bericht herunterladen."
   },
   "tip": {
     "message": "Die Abschlussprüfung zeigt getrennt bestätigte Entfernungen, verbleibende Reposts und Fehler."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Ergebnis wird mit TikTok überprüft…" },
   "statusVerificationPage": { "message": "Überprüfung Seite $1$: $2$ Reposts noch gelistet…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Fertig und bestätigt: $1$ Reposts entfernt.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Überprüfung beendet: $1$ entfernt, $2$ noch vorhanden.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Überprüfung beendet: $1$ entfernt, $2$ noch vorhanden.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "Erste Seite: $1$ von $2$ Elementen stimmen überein. Bestätige die Verarbeitung Seite für Seite.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Seitenweise Entfernung starten" }
 }

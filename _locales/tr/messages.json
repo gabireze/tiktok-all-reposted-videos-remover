@@ -27,7 +27,7 @@
     "message": "Tüm yeniden paylaşımlar silinene kadar tekrarlayın"
   },
   "note": {
-    "message": "Uzantı önce tarar ve herhangi bir şeyi kaldırmadan önce onay ister. Duraklatabilir, durdurabilir ve doğrulanmış bir rapor indirebilirsiniz."
+    "message": "Uzantı ilk sayfayı kontrol eder, onay ister ve ardından sayfaları tek tek işler. Duraklatabilir, durdurabilir ve doğrulanmış raporu indirebilirsiniz."
   },
   "tip": {
     "message": "Son doğrulama onaylanan kaldırmaları, kalan repostları ve hataları ayrı ayrı gösterir."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Sonuç TikTok ile doğrulanıyor…" },
   "statusVerificationPage": { "message": "Doğrulama $1$. sayfa: $2$ repost hâlâ listeleniyor…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Tamamlandı ve doğrulandı: $1$ repost kaldırıldı.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Doğrulama tamamlandı: $1$ kaldırıldı, $2$ hâlâ mevcut.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Doğrulama tamamlandı: $1$ kaldırıldı, $2$ hâlâ mevcut.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "İlk sayfa: $2$ öğeden $1$ tanesi eşleşiyor. Sayfa sayfa işlemeyi onaylayın.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Sayfa sayfa kaldırmayı başlat" }
 }

@@ -28,7 +28,7 @@
     "message": "Repeat until all reposted videos are gone"
   },
   "note": {
-    "message": "The extension scans first and asks for confirmation before removing anything. You can pause, stop, and download a verified report."
+    "message": "The extension checks the first page, asks for confirmation, then processes one page at a time. You can pause, stop, and download a verified report."
   },
   "tip": {
     "message": "Final verification separates confirmed removals, remaining reposts, and failures."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Verifying the result with TikTok…" },
   "statusVerificationPage": { "message": "Verification page $1$: $2$ reposts still listed…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Done and verified: $1$ reposts removed.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Verification complete: $1$ removed, $2$ still present.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Verification complete: $1$ removed, $2$ still present.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "First page: $1$ of $2$ items match. Confirm to process one page at a time.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Start page-by-page removal" }
 }

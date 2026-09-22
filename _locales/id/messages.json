@@ -27,7 +27,7 @@
     "message": "Ulangi sampai semua video repost dihapus"
   },
   "note": {
-    "message": "Ekstensi memindai terlebih dahulu dan meminta konfirmasi sebelum menghapus apa pun. Anda dapat menjeda, menghentikan, dan mengunduh laporan terverifikasi."
+    "message": "Ekstensi memeriksa halaman pertama, meminta konfirmasi, lalu memproses satu halaman pada satu waktu. Anda dapat menjeda, menghentikan, dan mengunduh laporan terverifikasi."
   },
   "tip": {
     "message": "Verifikasi akhir memisahkan penghapusan terkonfirmasi, repost yang tersisa, dan kegagalan."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Memverifikasi hasil dengan TikTok…" },
   "statusVerificationPage": { "message": "Verifikasi halaman $1$: $2$ repost masih terdaftar…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Selesai dan terverifikasi: $1$ repost dihapus.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Verifikasi selesai: $1$ dihapus, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Verifikasi selesai: $1$ dihapus, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "Halaman pertama: $1$ dari $2$ item cocok. Konfirmasikan pemrosesan halaman demi halaman.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Mulai penghapusan per halaman" }
 }

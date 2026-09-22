@@ -26,8 +26,8 @@ The extension performs the following actions, entirely in your browser:
 - Navigates to your TikTok profile.
 - Uses the same authenticated TikTok web APIs that the site itself uses to:
   - List your reposted videos.
-  - Scan every page before changing anything.
-  - Ask you to confirm the exact matched count.
+  - Load the first page and ask for confirmation before changing anything.
+  - Filter and process one page at a time; a full pre-scan runs only in read-only analysis mode.
   - Send requests to remove each confirmed repost.
   - Scan again to verify which reposts disappeared and which remain.
 - Shows an in-page control panel to pause, resume, stop, and download a local report.

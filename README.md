@@ -14,8 +14,8 @@ Remove all your reposted videos on TikTok automatically with a single action.
 ## Features
 
 - Opens your TikTok profile in a new tab automatically
-- Scans every repost page before making changes, preventing pagination from skipping items
-- Offers a read-only analysis mode and requires confirmation of the exact matched count
+- Processes one repost page at a time, so removal can start without a full-library pre-scan
+- Offers an optional full read-only analysis mode and requires confirmation before incremental removal
 - Uses the same authenticated TikTok web APIs as the site to list and remove reposted videos
 - In-page control panel on TikTok with:
   - Live status and statistics for listed, matched, processed, verified, remaining, and failed items
@@ -54,7 +54,7 @@ Remove all your reposted videos on TikTok automatically with a single action.
 4. Click **Analyze Without Removing** for a read-only preview, or **Scan and Remove Reposts**.
 5. A TikTok tab will open automatically. The in-page panel will appear near the top-right:
    - Shows current status (preparing, listing, removing, between pages, done)
-   - Review the exact matched count and explicitly confirm removal
+   - Review the first-page match count and explicitly confirm page-by-page removal
    - You can pause, resume, or stop the process
    - Download a report at any time once scan data exists
 6. Keep the tab open until the process finishes. Do not close it during the operation.
@@ -68,8 +68,8 @@ Remove all your reposted videos on TikTok automatically with a single action.
   - Shows a clear message explaining that you must sign in and start again.
   - Marks the process as paused and disables the pause/resume button.
 - When the extension cannot identify your account (no valid session data found), it shows a similar error message and stops safely.
-- The immutable initial scan is completed before any removal starts, so removing an item cannot shift later pagination and make the extension skip reposts.
-- Only items that match your keyword filter (if enabled) are included in the confirmation and removal set.
+- Normal removal loads, filters, and processes one page before requesting the next page. Full pre-scanning is reserved for read-only analysis mode.
+- Only items that match your keyword filter (if enabled) are removed and included in the report.
 - After requests finish, up to three verification scans compare the original candidate IDs with TikTok's current repost list.
 - Failures:
   - Any failed removal is logged in the panel as a failure.

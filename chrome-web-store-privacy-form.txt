@@ -2,7 +2,7 @@
 
 --- Single purpose ---
 
-This extension has one purpose: helping users remove reposted videos from their own TikTok account in bulk. It first scans every repost page without changing anything, applies the optional keyword filter, and shows the exact matched count. Removal starts only after explicit confirmation. It then scans TikTok again to verify which reposts disappeared and which remain. Processing happens locally in the browser and no data is sent to the developer or any server other than TikTok.
+This extension has one purpose: helping users remove reposted videos from their own TikTok account in bulk. It loads the first repost page, applies the optional keyword filter, and asks for explicit confirmation. It then filters and removes one page at a time, so large libraries do not require a complete pre-scan. A full pre-scan runs only when the user explicitly selects read-only analysis mode. It scans TikTok again after removal to verify which reposts disappeared and which remain. Processing happens locally in the browser and no data is sent to the developer or any server other than TikTok.
 
 --- scripting permission ---
 

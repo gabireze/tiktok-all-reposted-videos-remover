@@ -28,7 +28,7 @@
     "message": "Repetirá até que todos os reposts sejam removidos"
   },
   "note": {
-    "message": "A extensão analisa primeiro e pede confirmação antes de remover. Você pode pausar, parar e baixar um relatório verificado."
+    "message": "A extensão verifica a primeira página, pede confirmação e depois processa uma página por vez. Você pode pausar, parar e baixar um relatório verificado."
   },
   "tip": {
     "message": "A verificação final separa remoções confirmadas, reposts restantes e falhas."
@@ -178,5 +178,13 @@
   "statusVerifying": { "message": "Verificando o resultado diretamente no TikTok…" },
   "statusVerificationPage": { "message": "Verificação página $1$: $2$ reposts ainda listados…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
   "statusVerifiedDone": { "message": "Concluído e confirmado: $1$ reposts removidos.", "placeholders": { "1": { "content": "$1" } } },
-  "statusPartial": { "message": "Verificação concluída: $1$ removidos, $2$ ainda presentes.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
+  "statusPartial": { "message": "Verificação concluída: $1$ removidos, $2$ ainda presentes.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusReadyPageByPage": {
+    "message": "Primeira página: $1$ de $2$ itens correspondem. Confirme para processar uma página por vez.",
+    "placeholders": {
+      "1": { "content": "$1" },
+      "2": { "content": "$2" }
+    }
+  },
+  "btnConfirmPageByPage": { "message": "Iniciar remoção página por página" }
 }
