@@ -13,13 +13,17 @@ Remove all your reposted videos on TikTok automatically with a single action.
 
 ## Features
 
-- Opens your TikTok profile in a new tab automatically  
-- Uses the same authenticated TikTok web APIs as the site to list and remove reposted videos  
+- Opens your TikTok profile in a new tab automatically
+- Scans every repost page before making changes, preventing pagination from skipping items
+- Offers a read-only analysis mode and requires confirmation of the exact matched count
+- Uses the same authenticated TikTok web APIs as the site to list and remove reposted videos
 - In-page control panel on TikTok with:
-  - Live status and basic statistics (pages, removed, listed, failures)
-  - Pause / Resume
-  - Downloadable report (JSON or CSV) with removed and failed items  
-- Configurable delay between removals (1–10 seconds, random range or fixed set)  
+  - Live status and statistics for listed, matched, processed, verified, remaining, and failed items
+  - Pause / Resume / Stop with immediate cancellation of active waits and requests
+  - Downloadable JSON or CSV report with one final status per item
+- Re-scans TikTok after removal to verify which reposts actually disappeared
+- Retries temporary network and server failures with bounded exponential backoff
+- Configurable delay between removals (1–10 seconds, random range or fixed set)
 - Optional keyword filter to only remove reposts that match certain terms
 
 ---
@@ -47,11 +51,12 @@ Remove all your reposted videos on TikTok automatically with a single action.
    - Whether to filter by keywords or remove all reposts
    - Interval mode (random range or fixed set of seconds between removals)
    - Pause between pages and report format (JSON or CSV)
-4. Click **Start Removing Reposts**.
+4. Click **Analyze Without Removing** for a read-only preview, or **Scan and Remove Reposts**.
 5. A TikTok tab will open automatically. The in-page panel will appear near the top-right:
    - Shows current status (preparing, listing, removing, between pages, done)
-   - You can pause or resume the process
-   - You can download a report of removed and failed items at any time once there is data
+   - Review the exact matched count and explicitly confirm removal
+   - You can pause, resume, or stop the process
+   - Download a report at any time once scan data exists
 6. Keep the tab open until the process finishes. Do not close it during the operation.
 
 ---
@@ -63,9 +68,9 @@ Remove all your reposted videos on TikTok automatically with a single action.
   - Shows a clear message explaining that you must sign in and start again.
   - Marks the process as paused and disables the pause/resume button.
 - When the extension cannot identify your account (no valid session data found), it shows a similar error message and stops safely.
-- When removing reposts:
-  - Only items that match your keyword filter (if enabled) are removed.
-  - The panel keeps track of pages visited, items listed, items removed, and failures.
+- The immutable initial scan is completed before any removal starts, so removing an item cannot shift later pagination and make the extension skip reposts.
+- Only items that match your keyword filter (if enabled) are included in the confirmation and removal set.
+- After requests finish, up to three verification scans compare the original candidate IDs with TikTok's current repost list.
 - Failures:
   - Any failed removal is logged in the panel as a failure.
   - Failed items are included in the report with a status flag so you can review them later.
@@ -75,17 +80,17 @@ Remove all your reposted videos on TikTok automatically with a single action.
 
 ## Report format
 
-The report exported from the panel contains all items that were processed:
+The report includes metadata, summary totals, diagnostics, and each matched item exactly once:
 
-- JSON: an object with two arrays
-  - `removed`: items successfully removed
-  - `failed`: items that could not be removed
+- JSON: `metadata`, `summary`, `items`, and `diagnostics`
 - CSV: one table with the following columns
   - `id`
   - `authorName`
   - `desc`
   - `url`
-  - `status` (`removed` or `failed`)
+  - `status` (`matched`, `verified_removed`, `still_present`, `request_failed`, `request_succeeded_unverified`, or `not_processed`)
+
+CSV cells beginning with spreadsheet formula characters are escaped.
 
 This makes it easy to audit what was removed and what failed, or to keep a backup list of reposted videos.
 
@@ -96,10 +101,9 @@ This makes it easy to audit what was removed and what failed, or to keep a backu
 The extension uses the following Chrome permissions:
 
 - `host_permissions` (`https://*.tiktok.com/*`): allows the extension to run only on TikTok pages.
-- `scripting`: injects and runs the content script on TikTok pages and reads session data needed to identify your account.
+- `scripting`: injects and runs the content script on TikTok pages, executes the confirmed removal request in TikTok's page context, and reads session data needed to identify your account.
 - `tabs`: opens your TikTok profile in a new tab and communicates with that tab.
-- `cookies`: used only in the popup to check whether you are logged in to TikTok (by checking TikTok cookies locally).
-- `storage`: saves your configuration (intervals, keywords, report format, etc.) in your browser.
+- `storage`: saves your configuration locally and keeps a temporary active-job marker (automatically expired after 12 hours) to prevent overlapping runs.
 
 No analytics, tracking, or external servers are used. All operations happen in your browser, talking directly to TikTok.
 
@@ -109,7 +113,7 @@ No analytics, tracking, or external servers are used. All operations happen in y
 
 - The process may take time depending on how many reposted videos you have.
 - If TikTok temporarily blocks actions (rate limiting), wait about 1 hour and run the extension again.
-- To confirm everything was removed, refresh your profile after the process completes.
+- The final status is based on a fresh TikTok API scan, rather than only on whether a removal request returned success.
 
 ---
 

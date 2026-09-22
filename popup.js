@@ -360,22 +360,16 @@ function openDonation() {
   chrome.tabs.create({ url: donationUrl });
 }
 
-async function checkTiktokLogin() {
-  try {
-    const cookies = await chrome.cookies.getAll({ domain: "tiktok.com" });
-    const hasMultiSids = cookies.some((c) => c.name === "multi_sids");
-    const hasLivingUserId = cookies.some((c) => c.name === "living_user_id");
-    return !!(hasMultiSids || hasLivingUserId);
-  } catch (e) {
-    return false;
-  }
-}
-
 const I18N_KEYS_PANEL = [
   "panelTitle", "statusPreparing", "statusPaused", "statusResuming", "btnPause", "btnResume",
   "btnDownloadReport", "statusWaiting", "statusListing", "statusPageRemoving", "statusDone",
   "statusNone", "statusErrorNoAccount", "statusErrorRedirectedForyou", "statusErrorRemove", "panelClose", "statsPages",
-  "statsRemoved", "statsListed", "statsFailed", "statusStoppedFailures", "statusBetweenPages"
+  "statsRemoved", "statsListed", "statsFailed", "statusStoppedFailures", "statusBetweenPages",
+  "btnStop", "statusCancelled", "statusListError", "statusPageScanning", "statusScanDone",
+  "statusBetweenScanPages", "statusRateLimited", "statusSessionRejected", "statsMatched",
+  "btnConfirmRemoval", "btnCancel", "statsVerified", "statsRemaining", "statsProcessed",
+  "statusNoMatches", "statusReadyToRemove", "statusRemovingProgress", "statusVerifying",
+  "statusVerificationPage", "statusVerifiedDone", "statusPartial"
 ];
 
 function applyI18n() {
@@ -385,7 +379,7 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     const message = getMsg(key);
-    element.innerHTML = message || element.innerHTML || "";
+    if (message) element.textContent = message;
   });
   document.querySelectorAll("[data-i18n-title]").forEach((element) => {
     const key = element.getAttribute("data-i18n-title");
@@ -407,8 +401,9 @@ function applyI18n() {
 function getPanelI18n() {
   const i18n = typeof chrome !== "undefined" && chrome.i18n ? chrome.i18n : null;
   const o = {};
+  const placeholderTokens = ["$1$", "$2$", "$3$"];
   I18N_KEYS_PANEL.forEach((key) => {
-    o[key] = (i18n && i18n.getMessage(key)) || key;
+    o[key] = (i18n && i18n.getMessage(key, placeholderTokens)) || "";
   });
   return o;
 }
@@ -429,6 +424,7 @@ function getConfig() {
   const reportFormat = document.getElementById("reportFormat").value;
   const pagePause = Math.max(0, Math.min(120, parseInt(document.getElementById("pagePause").value, 10) || 5));
   return {
+    useKeywords,
     keywordsFilter,
     requestIntervalMode: intervalMode,
     requestIntervalRange: { min: intervalMin, max: intervalMax },
@@ -463,7 +459,11 @@ function loadSavedConfig() {
       const rangeGrp = document.getElementById("intervalRangeGroup");
       const setGrp = document.getElementById("intervalSetGroup");
       if (rangeGrp) rangeGrp.style.display = isRange ? "flex" : "none";
-      if (setGrp) setGrp.style.display = isRange ? "none" : "flex";
+      if (setGrp) {
+        setGrp.style.display = isRange ? "none" : "flex";
+        if (isRange) setGrp.setAttribute("hidden", "");
+        else setGrp.removeAttribute("hidden");
+      }
       if (c.requestIntervalRange) {
         const minEl = document.getElementById("intervalMin");
         const maxEl = document.getElementById("intervalMax");
@@ -508,7 +508,7 @@ function saveConfig(config) {
   try {
     storage.set({
       trrConfig: {
-        useKeywords: !!config.keywordsFilter,
+        useKeywords: !!config.useKeywords,
         keywordsFilter: config.keywordsFilter,
         requestIntervalMode: config.requestIntervalMode,
         requestIntervalRange: config.requestIntervalRange,
@@ -613,42 +613,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const isRange = this.value === "range";
     intervalRangeGroup.style.display = isRange ? "flex" : "none";
     intervalSetGroup.style.display = isRange ? "none" : "flex";
+    if (isRange) intervalSetGroup.setAttribute("hidden", "");
+    else intervalSetGroup.removeAttribute("hidden");
   });
 
-  const loginButton = document.getElementById("loginButton");
-  checkTiktokLogin().then((isLoggedIn) => {
-    if (isLoggedIn) {
-      startButton.disabled = false;
-      startButton.style.display = "block";
-      if (loginButton) { loginButton.style.display = "none"; loginButton.hidden = true; }
-    } else {
-      startButton.disabled = true;
-      startButton.style.display = "none";
-      if (loginButton) {
-        loginButton.hidden = false;
-        loginButton.style.display = "block";
-        const i18n = typeof chrome !== "undefined" && chrome.i18n ? chrome.i18n : null;
-        loginButton.title = (i18n && i18n.getMessage("notLoggedIn")) || "Sign in to TikTok first.";
-      }
-    }
-  });
-  if (loginButton) {
-    loginButton.addEventListener("click", () => {
-      chrome.tabs.create({ url: "https://www.tiktok.com/login", active: true });
-      window.close();
-    });
-  }
+  const scanButton = document.getElementById("scanButton");
+  startButton.disabled = false;
+  startButton.style.display = "block";
+  if (scanButton) { scanButton.disabled = false; scanButton.style.display = "block"; }
 
-  startButton.addEventListener("click", function () {
+  function startRun(dryRun) {
     if (startButton.disabled) return;
     const config = getConfig();
+    config.dryRun = !!dryRun;
     saveConfig(config);
     chrome.runtime.sendMessage({
       action: "startRemovingReposts",
       payload: { config },
     });
     window.close();
-  });
+  }
+
+  if (scanButton) scanButton.addEventListener("click", function () { startRun(true); });
+  startButton.addEventListener("click", function () { startRun(false); });
 
   const donateButton = document.getElementById("donateButton");
   if (donateButton) {

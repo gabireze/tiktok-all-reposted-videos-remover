@@ -9,8 +9,9 @@
     "message": "Step 2: Come back here and click the button below to start the process."
   },
   "startButton": {
-    "message": "Start Removing Reposts"
+    "message": "Scan and Remove Reposts"
   },
+  "scanButton": { "message": "Analyze Without Removing" },
   "list1": {
     "message": "The extension will open your TikTok profile"
   },
@@ -27,10 +28,10 @@
     "message": "Repeat until all reposted videos are gone"
   },
   "note": {
-    "message": "Use intervals to avoid rate limits. You can Pause and Resume from the in-page panel and download a report when done."
+    "message": "The extension scans first and asks for confirmation before removing anything. You can pause, stop, and download a verified report."
   },
   "tip": {
-    "message": "Tip: Refresh your TikTok profile after finishing to confirm reposts were removed."
+    "message": "Final verification separates confirmed removals, remaining reposts, and failures."
   },
   "linkLiked": {
     "message": "Remove All Liked Videos"
@@ -156,5 +157,26 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
-  }
+  },
+  "btnStop": { "message": "Stop" },
+  "btnCancel": { "message": "Cancel" },
+  "btnConfirmRemoval": { "message": "Remove $1$ reposts", "placeholders": { "1": { "content": "$1" } } },
+  "statsMatched": { "message": "Matched" },
+  "statsProcessed": { "message": "Processed" },
+  "statsVerified": { "message": "Verified" },
+  "statsRemaining": { "message": "Remaining" },
+  "statusCancelled": { "message": "Stopped by user." },
+  "statusListError": { "message": "Could not list reposts." },
+  "statusPageScanning": { "message": "Page $1$: $2$ of $3$ items match the filter…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" }, "3": { "content": "$3" } } },
+  "statusScanDone": { "message": "Analysis complete: $1$ of $2$ reposts match. Nothing was removed.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusBetweenScanPages": { "message": "Pause before the next scan page…" },
+  "statusRateLimited": { "message": "TikTok temporarily blocked excessive requests. Wait about one hour and try again." },
+  "statusSessionRejected": { "message": "TikTok rejected the session. Reload the page, sign in again if needed, and retry." },
+  "statusNoMatches": { "message": "Reposts were found, but none match the selected filter." },
+  "statusReadyToRemove": { "message": "$1$ of $2$ reposts match. Confirm to start removing.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusRemovingProgress": { "message": "Removing $1$ of $2$…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifying": { "message": "Verifying the result with TikTok…" },
+  "statusVerificationPage": { "message": "Verification page $1$: $2$ reposts still listed…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifiedDone": { "message": "Done and verified: $1$ reposts removed.", "placeholders": { "1": { "content": "$1" } } },
+  "statusPartial": { "message": "Verification complete: $1$ removed, $2$ still present.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
 }

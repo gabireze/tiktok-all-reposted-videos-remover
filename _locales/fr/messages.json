@@ -9,7 +9,7 @@
     "message": "Étape 2 : Revenez ici et cliquez sur le bouton ci-dessous pour commencer."
   },
   "startButton": {
-    "message": "Commencer la suppression des reposts"
+    "message": "Analyser et supprimer les reposts"
   },
   "list1": {
     "message": "L'extension ouvrira votre profil TikTok"
@@ -27,10 +27,10 @@
     "message": "Répéter jusqu'à suppression de tous les reposts"
   },
   "note": {
-    "message": "Remarque : Si vous avez beaucoup de vidéos repostées, le processus peut être long. TikTok peut temporairement bloquer les actions si elles sont trop nombreuses. Attendez environ 1 heure et réessayez."
+    "message": "L’extension analyse d’abord et demande confirmation avant toute suppression. Vous pouvez mettre en pause, arrêter et télécharger un rapport vérifié."
   },
   "tip": {
-    "message": "Conseil : Une fois le processus terminé, actualisez votre profil TikTok pour vérifier que tous les reposts ont été supprimés."
+    "message": "La vérification finale distingue les suppressions confirmées, les reposts restants et les échecs."
   },
   "linkLiked": {
     "message": "Supprimer toutes les vidéos aimées"
@@ -156,5 +156,27 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
-  }
+  },
+  "scanButton": { "message": "Analyser sans supprimer" },
+  "btnStop": { "message": "Arrêter" },
+  "btnCancel": { "message": "Annuler" },
+  "btnConfirmRemoval": { "message": "Supprimer $1$ reposts", "placeholders": { "1": { "content": "$1" } } },
+  "statsMatched": { "message": "Correspondants" },
+  "statsProcessed": { "message": "Traités" },
+  "statsVerified": { "message": "Vérifiés" },
+  "statsRemaining": { "message": "Restants" },
+  "statusCancelled": { "message": "Arrêté par l’utilisateur." },
+  "statusListError": { "message": "Impossible de charger les reposts." },
+  "statusPageScanning": { "message": "Page $1$ : $2$ éléments sur $3$ correspondent au filtre…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" }, "3": { "content": "$3" } } },
+  "statusScanDone": { "message": "Analyse terminée : $1$ reposts sur $2$ correspondent. Rien n’a été supprimé.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusBetweenScanPages": { "message": "Pause avant la page d’analyse suivante…" },
+  "statusRateLimited": { "message": "TikTok a temporairement bloqué les requêtes excessives. Attendez environ une heure et réessayez." },
+  "statusSessionRejected": { "message": "TikTok a refusé la session. Rechargez la page, reconnectez-vous si nécessaire et réessayez." },
+  "statusNoMatches": { "message": "Des reposts ont été trouvés, mais aucun ne correspond au filtre." },
+  "statusReadyToRemove": { "message": "$1$ reposts sur $2$ correspondent. Confirmez la suppression.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusRemovingProgress": { "message": "Suppression de $1$ sur $2$…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifying": { "message": "Vérification du résultat avec TikTok…" },
+  "statusVerificationPage": { "message": "Vérification page $1$ : $2$ reposts encore listés…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifiedDone": { "message": "Terminé et vérifié : $1$ reposts supprimés.", "placeholders": { "1": { "content": "$1" } } },
+  "statusPartial": { "message": "Vérification terminée : $1$ supprimés, $2$ encore présents.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
 }

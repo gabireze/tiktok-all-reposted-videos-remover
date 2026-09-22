@@ -9,7 +9,7 @@
     "message": "Langkah 2: Kembali ke sini dan klik butang di bawah untuk memulakan."
   },
   "startButton": {
-    "message": "Mulakan penghapusan repost"
+    "message": "Imbas dan Padam Repost"
   },
   "list1": {
     "message": "Sambungan ini akan membuka profil TikTok anda"
@@ -27,10 +27,10 @@
     "message": "Ulangi sehingga semua repost dipadamkan"
   },
   "note": {
-    "message": "Nota: Jika anda mempunyai banyak video repost, proses ini mungkin mengambil masa. TikTok mungkin menyekat tindakan buat sementara waktu jika terlalu banyak dilakukan. Tunggu kira-kira 1 jam dan cuba semula."
+    "message": "Sambungan mengimbas dahulu dan meminta pengesahan sebelum memadam apa-apa. Anda boleh jeda, berhenti dan memuat turun laporan yang disahkan."
   },
   "tip": {
-    "message": "Petua: Setelah proses selesai, segarkan profil TikTok anda untuk memastikan semua repost telah dipadamkan."
+    "message": "Pengesahan akhir memisahkan pemadaman disahkan, repost yang masih ada dan kegagalan."
   },
   "linkLiked": {
     "message": "Padam Semua Video Disukai"
@@ -156,5 +156,27 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
-  }
+  },
+  "scanButton": { "message": "Analisis tanpa memadam" },
+  "btnStop": { "message": "Berhenti" },
+  "btnCancel": { "message": "Batal" },
+  "btnConfirmRemoval": { "message": "Padam $1$ repost", "placeholders": { "1": { "content": "$1" } } },
+  "statsMatched": { "message": "Sepadan" },
+  "statsProcessed": { "message": "Diproses" },
+  "statsVerified": { "message": "Disahkan" },
+  "statsRemaining": { "message": "Baki" },
+  "statusCancelled": { "message": "Dihentikan oleh pengguna." },
+  "statusListError": { "message": "Repost tidak dapat dimuatkan." },
+  "statusPageScanning": { "message": "Halaman $1$: $2$ daripada $3$ item sepadan dengan penapis…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" }, "3": { "content": "$3" } } },
+  "statusScanDone": { "message": "Analisis selesai: $1$ daripada $2$ repost sepadan. Tiada yang dipadam.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusBetweenScanPages": { "message": "Jeda sebelum halaman imbasan seterusnya…" },
+  "statusRateLimited": { "message": "TikTok menyekat terlalu banyak permintaan buat sementara. Tunggu kira-kira satu jam dan cuba lagi." },
+  "statusSessionRejected": { "message": "TikTok menolak sesi. Muat semula halaman, log masuk semula jika perlu, kemudian cuba lagi." },
+  "statusNoMatches": { "message": "Repost ditemui, tetapi tiada yang sepadan dengan penapis." },
+  "statusReadyToRemove": { "message": "$1$ daripada $2$ repost sepadan. Sahkan pemadaman.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusRemovingProgress": { "message": "Memadam $1$ daripada $2$…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifying": { "message": "Mengesahkan hasil dengan TikTok…" },
+  "statusVerificationPage": { "message": "Pengesahan halaman $1$: $2$ repost masih disenaraikan…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifiedDone": { "message": "Selesai dan disahkan: $1$ repost dipadam.", "placeholders": { "1": { "content": "$1" } } },
+  "statusPartial": { "message": "Pengesahan selesai: $1$ dipadam, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
 }

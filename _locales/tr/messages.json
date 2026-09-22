@@ -9,7 +9,7 @@
     "message": "Adım 2: Buraya geri dönün ve başlamak için aşağıdaki butona tıklayın."
   },
   "startButton": {
-    "message": "Yeniden paylaşımları kaldırmaya başla"
+    "message": "Repostları Tara ve Kaldır"
   },
   "list1": {
     "message": "Eklenti TikTok profilinizi açacak"
@@ -27,10 +27,10 @@
     "message": "Tüm yeniden paylaşımlar silinene kadar tekrarlayın"
   },
   "note": {
-    "message": "Not: Eğer çok sayıda yeniden paylaşılan videonuz varsa, işlem uzun sürebilir. TikTok çok fazla işlem yapılırsa geçici olarak engelleme uygulayabilir. Yaklaşık 1 saat bekleyip tekrar deneyin."
+    "message": "Uzantı önce tarar ve herhangi bir şeyi kaldırmadan önce onay ister. Duraklatabilir, durdurabilir ve doğrulanmış bir rapor indirebilirsiniz."
   },
   "tip": {
-    "message": "İpucu: İşlem tamamlandığında, tüm yeniden paylaşımların silindiğinden emin olmak için TikTok profilinizi yenileyin."
+    "message": "Son doğrulama onaylanan kaldırmaları, kalan repostları ve hataları ayrı ayrı gösterir."
   },
   "linkLiked": {
     "message": "Tüm Beğenilen Videoları Kaldır"
@@ -156,5 +156,27 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
-  }
+  },
+  "scanButton": { "message": "Kaldırmadan analiz et" },
+  "btnStop": { "message": "Durdur" },
+  "btnCancel": { "message": "İptal" },
+  "btnConfirmRemoval": { "message": "$1$ repostu kaldır", "placeholders": { "1": { "content": "$1" } } },
+  "statsMatched": { "message": "Eşleşen" },
+  "statsProcessed": { "message": "İşlenen" },
+  "statsVerified": { "message": "Doğrulanan" },
+  "statsRemaining": { "message": "Kalan" },
+  "statusCancelled": { "message": "Kullanıcı tarafından durduruldu." },
+  "statusListError": { "message": "Repostlar yüklenemedi." },
+  "statusPageScanning": { "message": "$1$. sayfa: $3$ öğeden $2$ tanesi filtreyle eşleşiyor…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" }, "3": { "content": "$3" } } },
+  "statusScanDone": { "message": "Analiz tamamlandı: $2$ reposttan $1$ tanesi eşleşti. Hiçbir şey kaldırılmadı.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusBetweenScanPages": { "message": "Sonraki tarama sayfasından önce bekleniyor…" },
+  "statusRateLimited": { "message": "TikTok çok fazla isteği geçici olarak engelledi. Yaklaşık bir saat bekleyip yeniden deneyin." },
+  "statusSessionRejected": { "message": "TikTok oturumu reddetti. Sayfayı yenileyin, gerekirse tekrar oturum açın ve yeniden deneyin." },
+  "statusNoMatches": { "message": "Repostlar bulundu ancak hiçbiri filtreyle eşleşmiyor." },
+  "statusReadyToRemove": { "message": "$2$ reposttan $1$ tanesi eşleşiyor. Kaldırmayı onaylayın.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusRemovingProgress": { "message": "$2$ öğeden $1$ kaldırılıyor…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifying": { "message": "Sonuç TikTok ile doğrulanıyor…" },
+  "statusVerificationPage": { "message": "Doğrulama $1$. sayfa: $2$ repost hâlâ listeleniyor…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifiedDone": { "message": "Tamamlandı ve doğrulandı: $1$ repost kaldırıldı.", "placeholders": { "1": { "content": "$1" } } },
+  "statusPartial": { "message": "Doğrulama tamamlandı: $1$ kaldırıldı, $2$ hâlâ mevcut.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
 }

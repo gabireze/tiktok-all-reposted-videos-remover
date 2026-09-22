@@ -1,0 +1,25 @@
+=== Chrome Web Store – Privacy / Single purpose & permission justifications ===
+
+--- Single purpose ---
+
+This extension has one purpose: helping users remove reposted videos from their own TikTok account in bulk. It first scans every repost page without changing anything, applies the optional keyword filter, and shows the exact matched count. Removal starts only after explicit confirmation. It then scans TikTok again to verify which reposts disappeared and which remain. Processing happens locally in the browser and no data is sent to the developer or any server other than TikTok.
+
+--- scripting permission ---
+
+The scripting permission runs the content script and in-page control panel on TikTok, reads the page session context needed to identify the signed-in account, and performs a user-confirmed repost-removal request in TikTok's MAIN page world so it uses the existing TikTok session.
+
+--- tabs permission ---
+
+The tabs permission opens the user's TikTok profile, focuses an already active run, and communicates only with that TikTok tab. The extension does not inspect or modify unrelated tabs.
+
+--- storage permission ---
+
+The storage permission saves local popup settings and a temporary chrome.storage.session active-job marker. The marker prevents overlapping runs if Chrome suspends the Manifest V3 service worker and automatically expires after 12 hours. This data stays on the user's device.
+
+--- host permission ---
+
+The https://*.tiktok.com/* host permission is required because the extension lists reposts through TikTok's repost API, performs confirmed removal requests, and scans again for verification. No other website host is accessed.
+
+--- Data use ---
+
+The extension does not collect, sell, transfer, or use personal data for advertising, analytics, credit, or any unrelated purpose. TikTok session information is used transiently on the device only to perform the requested operation. Reports are generated locally and downloaded only when the user chooses.

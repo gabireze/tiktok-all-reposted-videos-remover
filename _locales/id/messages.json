@@ -9,7 +9,7 @@
     "message": "Langkah 2: Kembali ke sini dan klik tombol di bawah untuk memulai proses."
   },
   "startButton": {
-    "message": "Mulai Menghapus Repost"
+    "message": "Pindai dan Hapus Repost"
   },
   "list1": {
     "message": "Ekstensi akan membuka profil TikTok Anda"
@@ -27,10 +27,10 @@
     "message": "Ulangi sampai semua video repost dihapus"
   },
   "note": {
-    "message": "Catatan: Jika Anda memiliki banyak video repost, prosesnya bisa memakan waktu. TikTok mungkin memblokir sementara jika terlalu banyak aksi dalam waktu singkat. Tunggu sekitar 1 jam dan coba lagi."
+    "message": "Ekstensi memindai terlebih dahulu dan meminta konfirmasi sebelum menghapus apa pun. Anda dapat menjeda, menghentikan, dan mengunduh laporan terverifikasi."
   },
   "tip": {
-    "message": "Tips: Setelah proses selesai, segarkan profil TikTok Anda untuk memastikan semua video repost telah dihapus."
+    "message": "Verifikasi akhir memisahkan penghapusan terkonfirmasi, repost yang tersisa, dan kegagalan."
   },
   "linkLiked": {
     "message": "Hapus Semua Video yang Disukai"
@@ -156,5 +156,27 @@
   },
   "statusBetweenPages": {
     "message": "Pause before next page…"
-  }
+  },
+  "scanButton": { "message": "Analisis tanpa menghapus" },
+  "btnStop": { "message": "Hentikan" },
+  "btnCancel": { "message": "Batal" },
+  "btnConfirmRemoval": { "message": "Hapus $1$ repost", "placeholders": { "1": { "content": "$1" } } },
+  "statsMatched": { "message": "Cocok" },
+  "statsProcessed": { "message": "Diproses" },
+  "statsVerified": { "message": "Terverifikasi" },
+  "statsRemaining": { "message": "Tersisa" },
+  "statusCancelled": { "message": "Dihentikan oleh pengguna." },
+  "statusListError": { "message": "Repost tidak dapat dimuat." },
+  "statusPageScanning": { "message": "Halaman $1$: $2$ dari $3$ item cocok dengan filter…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" }, "3": { "content": "$3" } } },
+  "statusScanDone": { "message": "Analisis selesai: $1$ dari $2$ repost cocok. Tidak ada yang dihapus.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusBetweenScanPages": { "message": "Jeda sebelum halaman pemindaian berikutnya…" },
+  "statusRateLimited": { "message": "TikTok memblokir terlalu banyak permintaan untuk sementara. Tunggu sekitar satu jam lalu coba lagi." },
+  "statusSessionRejected": { "message": "TikTok menolak sesi. Muat ulang halaman, masuk kembali jika perlu, lalu coba lagi." },
+  "statusNoMatches": { "message": "Repost ditemukan, tetapi tidak ada yang cocok dengan filter." },
+  "statusReadyToRemove": { "message": "$1$ dari $2$ repost cocok. Konfirmasikan penghapusan.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusRemovingProgress": { "message": "Menghapus $1$ dari $2$…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifying": { "message": "Memverifikasi hasil dengan TikTok…" },
+  "statusVerificationPage": { "message": "Verifikasi halaman $1$: $2$ repost masih terdaftar…", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } },
+  "statusVerifiedDone": { "message": "Selesai dan terverifikasi: $1$ repost dihapus.", "placeholders": { "1": { "content": "$1" } } },
+  "statusPartial": { "message": "Verifikasi selesai: $1$ dihapus, $2$ masih ada.", "placeholders": { "1": { "content": "$1" }, "2": { "content": "$2" } } }
 }

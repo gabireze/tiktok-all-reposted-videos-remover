@@ -8,8 +8,8 @@ TikTok All Reposted Videos Remover is a Chrome extension designed to help users 
 
 ## What Data We Collect
 
-**We do not collect or transmit any personal data.**  
-All extension logic runs entirely within your browser, and no data is sent to any external server.
+**We do not collect or transmit personal data to the developer or any third party.**
+All extension logic runs within your browser. Network requests go only to TikTok to perform the operation you requested.
 
 Specifically:
 - We do **not** collect your TikTok credentials.
@@ -26,8 +26,11 @@ The extension performs the following actions, entirely in your browser:
 - Navigates to your TikTok profile.
 - Uses the same authenticated TikTok web APIs that the site itself uses to:
   - List your reposted videos.
-  - Send requests to remove each selected repost.
-- Shows an in-page control panel to pause, resume, and download a local report of the items processed.
+  - Scan every page before changing anything.
+  - Ask you to confirm the exact matched count.
+  - Send requests to remove each confirmed repost.
+  - Scan again to verify which reposts disappeared and which remain.
+- Shows an in-page control panel to pause, resume, stop, and download a local report.
 
 All requests are made **directly from your browser to TikTok** using your existing session.  
 No data is sent to any server controlled by this extension or its developer.
@@ -45,10 +48,9 @@ This extension does **not** use any third-party analytics, tracking scripts, or 
 The extension uses the following Chrome permissions:
 
 - **`host_permissions`** (`https://*.tiktok.com/*`): Required so the extension can run only on TikTok pages. No other domains are accessed.
-- **`scripting`**: Needed to inject and run the content script on TikTok pages and to read session data required to identify your account.
-- **`tabs`**: Used to open your TikTok profile in a new tab and communicate with that tab.
-- **`cookies`**: Used **only in the popup** to check whether you are logged in to TikTok (by checking TikTok cookies locally). Cookie values are not stored or sent anywhere.
-- **`storage`**: Used to save your local configuration (intervals, keywords, report format, etc.) inside your browser.
+- **`scripting`**: Needed to run the content script, execute a confirmed removal request in TikTok's page context, and read session data required to identify your account.
+- **`tabs`**: Used to open your TikTok profile, focus an already active run, and communicate with that TikTok tab.
+- **`storage`**: Used to save your local configuration and a temporary active-job marker. Stale markers automatically expire after 12 hours.
 
 These permissions are the minimum required for the extension to perform its intended function.  
 They are never used to collect analytics, track you across sites, or send data to external services.

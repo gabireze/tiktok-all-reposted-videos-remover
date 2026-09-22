@@ -1,7 +1,7 @@
 {
   "name": "TikTok All Reposted Videos Remover",
-  "description": "Automatically remove reposted videos on TikTok with an in-page control panel and downloadable report.",
-  "version": "2.0.0",
+  "description": "Safely scan, confirm, remove, and verify reposted TikTok videos with an in-page panel and local report.",
+  "version": "2.1.0",
   "author": {
     "name": "Gabriel de Rezende Gonçalves",
     "email": "contato@gabireze.com.br",
@@ -11,7 +11,6 @@
   "permissions": [
     "scripting",
     "tabs",
-    "cookies",
     "storage"
   ],
   "host_permissions": [
@@ -41,12 +40,6 @@
     "default_title": "TikTok All Reposted Video Remover",
     "default_popup": "popup.html"
   },
-  "web_accessible_resources": [
-    {
-      "resources": ["script.js", "styles.css"],
-      "matches": ["https://*.tiktok.com/*"]
-    }
-  ],
   "manifest_version": 3,
   "default_locale": "en"
 }

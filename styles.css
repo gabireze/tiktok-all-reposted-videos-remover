@@ -427,6 +427,23 @@ body {
   transform: none;
 }
 
+.popup-btn-secondary {
+  background: rgba(0, 242, 234, 0.08);
+  color: var(--accent-alt);
+  border: 1px solid rgba(0, 242, 234, 0.35);
+}
+
+.popup-btn-secondary:hover:not(:disabled) {
+  background: rgba(0, 242, 234, 0.14);
+  transform: translateY(-1px);
+}
+
+.popup-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .popup-btn-ghost {
   background: var(--surface);
   color: var(--muted);
