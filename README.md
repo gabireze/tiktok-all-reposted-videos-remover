@@ -100,7 +100,7 @@ This makes it easy to audit what was removed and what failed, or to keep a backu
 
 The extension uses the following Chrome permissions:
 
-- `host_permissions` (`https://*.tiktok.com/*`): allows the extension to run only on TikTok pages.
+- `host_permissions` (`https://www.tiktok.com/*`): allows the extension to run only on TikTok pages.
 - `scripting`: injects and runs the content script on TikTok pages, executes the confirmed removal request in TikTok's page context, and reads session data needed to identify your account.
 - `tabs`: opens your TikTok profile in a new tab and communicates with that tab.
 - `storage`: saves your configuration locally and keeps a temporary active-job marker (automatically expired after 12 hours) to prevent overlapping runs.

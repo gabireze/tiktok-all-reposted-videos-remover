@@ -18,7 +18,7 @@ The storage permission saves local popup settings and a temporary chrome.storage
 
 --- host permission ---
 
-The https://*.tiktok.com/* host permission is required because the extension lists reposts through TikTok's repost API, performs confirmed removal requests, and scans again for verification. No other website host is accessed.
+The https://www.tiktok.com/* host permission is required because the extension lists reposts through TikTok's repost API, performs confirmed removal requests, and scans again for verification. No other website host is accessed.
 
 --- Data use ---
 

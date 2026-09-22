@@ -139,7 +139,35 @@ function isActiveJobStale(job, now = Date.now()) {
   return !job || !job.startedAt || now - job.startedAt > ACTIVE_JOB_MAX_AGE_MS;
 }
 
+function isTrustedContentSender(sender) {
+  if (!sender || sender.id !== chrome.runtime.id || !sender.tab || !Number.isInteger(sender.tab.id)) return false;
+  if (sender.frameId != null && sender.frameId !== 0) return false;
+  try {
+    const url = new URL(sender.url);
+    return url.protocol === "https:" && url.hostname === "www.tiktok.com";
+  } catch (error) {
+    return false;
+  }
+}
+
+function isTrustedPopupSender(sender) {
+  return !!sender && sender.id === chrome.runtime.id && !sender.tab &&
+    sender.url === chrome.runtime.getURL("popup.html");
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (!request || typeof request.action !== "string") return false;
+  if (request.action === "startRemovingReposts") {
+    if (!isTrustedPopupSender(sender)) return false;
+  } else if (
+    request.action === "runFinished" ||
+    request.action === "getRepostContext" ||
+    request.action === "injectPageRemoveListener"
+  ) {
+    if (!isTrustedContentSender(sender)) return false;
+  } else {
+    return false;
+  }
   if (request.action === "runFinished") {
     clearStoredActiveJob(sender.tab && sender.tab.id, () => sendResponse({ ok: true }));
     return true;

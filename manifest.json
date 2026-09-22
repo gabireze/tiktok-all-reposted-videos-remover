@@ -1,7 +1,7 @@
 {
   "name": "TikTok All Reposted Videos Remover",
   "description": "Safely scan, confirm, remove, and verify reposted TikTok videos with an in-page panel and local report.",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": {
     "name": "Gabriel de Rezende Gonçalves",
     "email": "contato@gabireze.com.br",
@@ -14,7 +14,7 @@
     "storage"
   ],
   "host_permissions": [
-    "https://*.tiktok.com/*"
+    "https://www.tiktok.com/*"
   ],
   "content_scripts": [
     {

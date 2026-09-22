@@ -610,13 +610,16 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDualRangeDisplay();
   }
 
-  intervalMode.addEventListener("change", function () {
-    const isRange = this.value === "range";
+  function syncIntervalGroups() {
+    if (!intervalMode || !intervalRangeGroup || !intervalSetGroup) return;
+    const isRange = intervalMode.value === "range";
     intervalRangeGroup.style.display = isRange ? "flex" : "none";
     intervalSetGroup.style.display = isRange ? "none" : "flex";
     if (isRange) intervalSetGroup.setAttribute("hidden", "");
     else intervalSetGroup.removeAttribute("hidden");
-  });
+  }
+  syncIntervalGroups();
+  if (intervalMode) intervalMode.addEventListener("change", syncIntervalGroups);
 
   const scanButton = document.getElementById("scanButton");
   startButton.disabled = false;
