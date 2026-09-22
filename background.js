@@ -140,6 +140,10 @@ function isActiveJobStale(job, now = Date.now()) {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (sender.tab && sender.origin !== "https://www.tiktok.com") {
+    return false;
+  }
+
   if (request.action === "runFinished") {
     clearStoredActiveJob(sender.tab && sender.tab.id, () => sendResponse({ ok: true }));
     return true;
