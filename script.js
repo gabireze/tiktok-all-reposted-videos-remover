@@ -246,10 +246,25 @@
         return true;
       });
       items.push(...uniqueItems);
-      if (options.onPage) await options.onPage({ page, uniqueItems, total: items.length, result });
+      const removedOnPage = options.onPage
+        ? Number(await options.onPage({ page, uniqueItems, total: items.length, result })) || 0
+        : 0;
 
-      if (!result.hasMore || !result.nextCursor || result.items.length === 0) break;
-      cursor = result.nextCursor;
+      // Removing items shifts TikTok's cursor-based list. Resume from the
+      // beginning after a mutation so the next batch cannot be skipped.
+      if (removedOnPage > 0) {
+        cursor = "0";
+        seenCursors.clear();
+      } else {
+        if (!result.hasMore) break;
+        if (!result.nextCursor) {
+          const error = new Error("TikTok returned an incomplete pagination page");
+          error.code = "PAGINATION_INCOMPLETE";
+          diagnostics.push({ page, errorCode: error.code, cursorPresent: !!result.nextCursor });
+          throw error;
+        }
+        cursor = result.nextCursor;
+      }
       page++;
       if (!(await cancellableSleep(pagePauseMs))) {
         const cancelled = new Error("Cancelled");
@@ -762,6 +777,7 @@
             updatePanel(panel, panelState, t);
           }
 
+          const succeededBeforePage = panelState.reportItems.length;
           for (let index = 0; index < pageCandidates.length; index++) {
             const item = pageCandidates[index];
             if (!(await waitUntilRunnable())) {
@@ -796,7 +812,9 @@
               throw cancelled;
             }
           }
-          if (result.hasMore) setStatus(t.statusBetweenPages || "Loading the next page…");
+          const removedOnPage = panelState.reportItems.length - succeededBeforePage;
+          if (result.hasMore || removedOnPage > 0) setStatus(t.statusBetweenPages || "Loading the next page…");
+          return removedOnPage;
         },
       });
 
@@ -829,14 +847,15 @@
         if (!targetStillPresent || verificationAttempt === 3) break;
         if (!(await cancellableSleep(verificationAttempt * 2000))) return;
       }
-      panelState.reportVerifiedItems = candidates.filter((item) => !remainingIds.has(item.id));
+      const succeededIds = new Set(panelState.reportItems.map((item) => item.id));
+      panelState.reportVerifiedItems = candidates.filter((item) => succeededIds.has(item.id) && !remainingIds.has(item.id));
       panelState.reportStillPresentItems = candidates.filter((item) => remainingIds.has(item.id));
       panelState.verifiedRemoved = panelState.reportVerifiedItems.length;
       panelState.removed = panelState.verifiedRemoved;
       panelState.stillPresent = panelState.reportStillPresentItems.length;
       panelState.reportReady = true;
 
-      if (panelState.stillPresent === 0) {
+      if (panelState.stillPresent === 0 && panelState.failed === 0) {
         finish(substitutePlaceholders(t.statusVerifiedDone, [panelState.verifiedRemoved]) || `Done and verified: ${panelState.verifiedRemoved} reposts removed.`);
       } else {
         finish(substitutePlaceholders(t.statusPartial, [panelState.verifiedRemoved, panelState.stillPresent])

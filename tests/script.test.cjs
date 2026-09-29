@@ -92,6 +92,68 @@ async function testListingErrorsStayErrors() {
   await assert.rejects(api.getRepostItems("0", "sec-test"), (error) => error.code === "RATE_LIMITED" && error.httpStatus === 429);
 }
 
+async function testRemovalRestartsPaginationAfterMutatingPage() {
+  const remaining = ["1", "2", "3", "4"];
+  const fetchedCursors = [];
+  const api = loadWithFetch(async (url) => {
+    const cursor = Number(new URL(url).searchParams.get("cursor"));
+    fetchedCursors.push(cursor);
+    const pageItems = remaining.slice(cursor, cursor + 2);
+    return {
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({
+        status_code: 0,
+        hasMore: cursor + 2 < remaining.length,
+        cursor: cursor + 2,
+        itemList: pageItems.map((id) => ({ id, desc: id, author: { uniqueId: "a" } })),
+      }),
+    };
+  });
+  const processed = [];
+  await api.collectAllRepostItems("sec-test", {
+    pagePauseMs: 0,
+    async onPage({ uniqueItems }) {
+      for (const item of uniqueItems) {
+        processed.push(item.id);
+        remaining.splice(remaining.indexOf(item.id), 1);
+      }
+      return uniqueItems.length;
+    },
+  });
+  assert.deepEqual(processed, ["1", "2", "3", "4"]);
+  assert.deepEqual(remaining, []);
+  assert.deepEqual(fetchedCursors, [0, 0, 0]);
+}
+
+async function testIncompletePageDoesNotLookFinished() {
+  const api = loadWithFetch(async () => ({
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify({ status_code: 0, hasMore: true, cursor: null, itemList: [{ id: "1", author: { uniqueId: "a" } }] }),
+  }));
+  await assert.rejects(api.collectAllRepostItems("sec-test"), (error) => error.code === "PAGINATION_INCOMPLETE");
+}
+
+async function testEmptyPageWithMoreContinues() {
+  const api = loadWithFetch(async (url) => {
+    const cursor = new URL(url).searchParams.get("cursor");
+    return {
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({
+        status_code: 0,
+        hasMore: cursor === "0",
+        cursor: cursor === "0" ? "30" : "60",
+        itemList: cursor === "0" ? [] : [{ id: "1", author: { uniqueId: "a" } }],
+      }),
+    };
+  });
+  const result = await api.collectAllRepostItems("sec-test");
+  assert.deepEqual(Array.from(result.items, (item) => item.id), ["1"]);
+  assert.equal(result.pages, 2);
+}
+
 async function testCsvFormulaProtectionAndSingleStatus() {
   const api = loadWithFetch(async () => { throw new Error("not called"); });
   const item = { id: "1", authorName: "@a", desc: "=SUM(A1:A2)", url: "https://example.test/1" };
@@ -107,6 +169,9 @@ async function testCsvFormulaProtectionAndSingleStatus() {
   await testFinishedPanelHidesRunControls();
   await testListingAndAllPageCollection();
   await testListingErrorsStayErrors();
+  await testRemovalRestartsPaginationAfterMutatingPage();
+  await testIncompletePageDoesNotLookFinished();
+  await testEmptyPageWithMoreContinues();
   await testCsvFormulaProtectionAndSingleStatus();
   console.log("script tests: ok");
 })().catch((error) => { console.error(error); process.exitCode = 1; });
